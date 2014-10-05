@@ -1,0 +1,288 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		860955F619DCA45E00ECF43C /* freeform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 860955F419DCA45E00ECF43C /* freeform.cpp */; };
+		860955F919DCAEC400ECF43C /* lagrange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 860955F719DCAEC400ECF43C /* lagrange.cpp */; };
+		861A88F219CADE4D00E50E6C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 861A88F119CADE4D00E50E6C /* main.cpp */; };
+		861A890119CAE5D300E50E6C /* curve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 861A88FF19CAE5D300E50E6C /* curve.cpp */; };
+		861A890419CAE5E600E50E6C /* circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 861A890219CAE5E600E50E6C /* circle.cpp */; };
+		861A890619CAEF2700E50E6C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861A890519CAEF2700E50E6C /* OpenGL.framework */; };
+		861A890819CAEF2C00E50E6C /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861A890719CAEF2C00E50E6C /* GLUT.framework */; };
+		866C086919D4225E00D43256 /* crazycurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 866C086719D4225E00D43256 /* crazycurve.cpp */; };
+		866C086C19D429DB00D43256 /* bezier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 866C086A19D429DB00D43256 /* bezier.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		861A88EC19CADE4D00E50E6C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		860955F419DCA45E00ECF43C /* freeform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = freeform.cpp; sourceTree = "<group>"; };
+		860955F519DCA45E00ECF43C /* freeform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = freeform.h; sourceTree = "<group>"; };
+		860955F719DCAEC400ECF43C /* lagrange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lagrange.cpp; sourceTree = "<group>"; };
+		860955F819DCAEC400ECF43C /* lagrange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lagrange.h; sourceTree = "<group>"; };
+		861A88EE19CADE4D00E50E6C /* curves */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = curves; sourceTree = BUILT_PRODUCTS_DIR; };
+		861A88F119CADE4D00E50E6C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		861A88F819CADE8400E50E6C /* float2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = float2.h; sourceTree = "<group>"; };
+		861A88FF19CAE5D300E50E6C /* curve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = curve.cpp; sourceTree = "<group>"; };
+		861A890019CAE5D300E50E6C /* curve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curve.h; sourceTree = "<group>"; };
+		861A890219CAE5E600E50E6C /* circle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = circle.cpp; sourceTree = "<group>"; };
+		861A890319CAE5E600E50E6C /* circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = circle.h; sourceTree = "<group>"; };
+		861A890519CAEF2700E50E6C /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		861A890719CAEF2C00E50E6C /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		866C086719D4225E00D43256 /* crazycurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = crazycurve.cpp; sourceTree = "<group>"; };
+		866C086819D4225E00D43256 /* crazycurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crazycurve.h; sourceTree = "<group>"; };
+		866C086A19D429DB00D43256 /* bezier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bezier.cpp; sourceTree = "<group>"; };
+		866C086B19D429DB00D43256 /* bezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bezier.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		861A88EB19CADE4D00E50E6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				861A890819CAEF2C00E50E6C /* GLUT.framework in Frameworks */,
+				861A890619CAEF2700E50E6C /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		861A88E519CADE4D00E50E6C = {
+			isa = PBXGroup;
+			children = (
+				861A88F019CADE4D00E50E6C /* curves */,
+				861A88EF19CADE4D00E50E6C /* Products */,
+				861A890719CAEF2C00E50E6C /* GLUT.framework */,
+				861A890519CAEF2700E50E6C /* OpenGL.framework */,
+			);
+			sourceTree = "<group>";
+		};
+		861A88EF19CADE4D00E50E6C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				861A88EE19CADE4D00E50E6C /* curves */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		861A88F019CADE4D00E50E6C /* curves */ = {
+			isa = PBXGroup;
+			children = (
+				861A88F119CADE4D00E50E6C /* main.cpp */,
+				861A88F819CADE8400E50E6C /* float2.h */,
+				861A890019CAE5D300E50E6C /* curve.h */,
+				861A88FF19CAE5D300E50E6C /* curve.cpp */,
+				861A890319CAE5E600E50E6C /* circle.h */,
+				861A890219CAE5E600E50E6C /* circle.cpp */,
+				866C086819D4225E00D43256 /* crazycurve.h */,
+				866C086719D4225E00D43256 /* crazycurve.cpp */,
+				860955F519DCA45E00ECF43C /* freeform.h */,
+				860955F419DCA45E00ECF43C /* freeform.cpp */,
+				866C086B19D429DB00D43256 /* bezier.h */,
+				866C086A19D429DB00D43256 /* bezier.cpp */,
+				860955F819DCAEC400ECF43C /* lagrange.h */,
+				860955F719DCAEC400ECF43C /* lagrange.cpp */,
+			);
+			path = curves;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		861A88ED19CADE4D00E50E6C /* curves */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 861A88F519CADE4D00E50E6C /* Build configuration list for PBXNativeTarget "curves" */;
+			buildPhases = (
+				861A88EA19CADE4D00E50E6C /* Sources */,
+				861A88EB19CADE4D00E50E6C /* Frameworks */,
+				861A88EC19CADE4D00E50E6C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = curves;
+			productName = curves;
+			productReference = 861A88EE19CADE4D00E50E6C /* curves */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		861A88E619CADE4D00E50E6C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Aaron Taylor";
+				TargetAttributes = {
+					861A88ED19CADE4D00E50E6C = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 861A88E919CADE4D00E50E6C /* Build configuration list for PBXProject "curves" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 861A88E519CADE4D00E50E6C;
+			productRefGroup = 861A88EF19CADE4D00E50E6C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				861A88ED19CADE4D00E50E6C /* curves */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		861A88EA19CADE4D00E50E6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				861A890419CAE5E600E50E6C /* circle.cpp in Sources */,
+				866C086C19D429DB00D43256 /* bezier.cpp in Sources */,
+				866C086919D4225E00D43256 /* crazycurve.cpp in Sources */,
+				860955F619DCA45E00ECF43C /* freeform.cpp in Sources */,
+				861A88F219CADE4D00E50E6C /* main.cpp in Sources */,
+				861A890119CAE5D300E50E6C /* curve.cpp in Sources */,
+				860955F919DCAEC400ECF43C /* lagrange.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		861A88F319CADE4D00E50E6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		861A88F419CADE4D00E50E6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		861A88F619CADE4D00E50E6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		861A88F719CADE4D00E50E6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		861A88E919CADE4D00E50E6C /* Build configuration list for PBXProject "curves" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				861A88F319CADE4D00E50E6C /* Debug */,
+				861A88F419CADE4D00E50E6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		861A88F519CADE4D00E50E6C /* Build configuration list for PBXNativeTarget "curves" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				861A88F619CADE4D00E50E6C /* Debug */,
+				861A88F719CADE4D00E50E6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 861A88E619CADE4D00E50E6C /* Project object */;
+}
