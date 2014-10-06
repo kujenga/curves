@@ -20,8 +20,8 @@ protected:
     double lagrange(int n, double t);
 public:
     // calls superclass constructor
-    Lagrange(void) : Freeform() {}
-    Lagrange(const Freeform& previous);
+//    Lagrange(void) : Freeform() {}
+//    Lagrange(const Freeform& previous);
     
     void addControlPoint(float2 p);
     

@@ -8,12 +8,12 @@
 
 #include "lagrange.h"
 
-Lagrange::Lagrange(const Freeform& previous)
-{
-    for (int i = 0; i < previous.controlPointVector().size(); i++) {
-        addControlPoint(previous.controlPointVector().at(i));
-    }
-}
+//Lagrange::Lagrange(const Freeform& previous)
+//{
+//    for (int i = 0; i < previous.controlPointVector().size(); i++) {
+//        addControlPoint(previous.controlPointVector().at(i));
+//    }
+//}
 
 void Lagrange::addControlPoint(float2 p)
 {

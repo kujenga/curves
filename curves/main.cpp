@@ -67,11 +67,11 @@ void onKeyboard(unsigned char c, int x, int y)
 {
     switch (c) {
         case 'l':
-            _curve = new Lagrange(*_curve);
+            _curve = new Lagrange();
             break;
             
         case 'b':
-            _curve = new Bezier(*_curve);
+            _curve = new Bezier();
             break;
             
         default:

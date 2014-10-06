@@ -14,6 +14,10 @@
 		861A890419CAE5E600E50E6C /* circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 861A890219CAE5E600E50E6C /* circle.cpp */; };
 		861A890619CAEF2700E50E6C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861A890519CAEF2700E50E6C /* OpenGL.framework */; };
 		861A890819CAEF2C00E50E6C /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861A890719CAEF2C00E50E6C /* GLUT.framework */; };
+		863C4E0219E3313100E4A82D /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C4E0019E3313100E4A82D /* WindowManager.cpp */; };
+		863C4E0519E3314900E4A82D /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C4E0319E3314900E4A82D /* Window.cpp */; };
+		863C4E0B19E3316A00E4A82D /* ToolWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C4E0919E3316A00E4A82D /* ToolWindow.cpp */; };
+		863C4E0E19E3317F00E4A82D /* DrawWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C4E0C19E3317F00E4A82D /* DrawWindow.cpp */; };
 		866C086919D4225E00D43256 /* crazycurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 866C086719D4225E00D43256 /* crazycurve.cpp */; };
 		866C086C19D429DB00D43256 /* bezier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 866C086A19D429DB00D43256 /* bezier.cpp */; };
 /* End PBXBuildFile section */
@@ -36,14 +40,22 @@
 		860955F719DCAEC400ECF43C /* lagrange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lagrange.cpp; sourceTree = "<group>"; };
 		860955F819DCAEC400ECF43C /* lagrange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lagrange.h; sourceTree = "<group>"; };
 		861A88EE19CADE4D00E50E6C /* curves */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = curves; sourceTree = BUILT_PRODUCTS_DIR; };
-		861A88F119CADE4D00E50E6C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		861A88F819CADE8400E50E6C /* float2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = float2.h; sourceTree = "<group>"; };
+		861A88F119CADE4D00E50E6C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = curves/main.cpp; sourceTree = "<group>"; };
+		861A88F819CADE8400E50E6C /* float2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = float2.h; path = curves/float2.h; sourceTree = "<group>"; };
 		861A88FF19CAE5D300E50E6C /* curve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = curve.cpp; sourceTree = "<group>"; };
 		861A890019CAE5D300E50E6C /* curve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curve.h; sourceTree = "<group>"; };
 		861A890219CAE5E600E50E6C /* circle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = circle.cpp; sourceTree = "<group>"; };
 		861A890319CAE5E600E50E6C /* circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = circle.h; sourceTree = "<group>"; };
 		861A890519CAEF2700E50E6C /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		861A890719CAEF2C00E50E6C /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		863C4E0019E3313100E4A82D /* WindowManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WindowManager.cpp; path = curves/WindowManager.cpp; sourceTree = "<group>"; };
+		863C4E0119E3313100E4A82D /* WindowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WindowManager.h; path = curves/WindowManager.h; sourceTree = "<group>"; };
+		863C4E0319E3314900E4A82D /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Window.cpp; path = curves/Window.cpp; sourceTree = "<group>"; };
+		863C4E0419E3314900E4A82D /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Window.h; path = curves/Window.h; sourceTree = "<group>"; };
+		863C4E0919E3316A00E4A82D /* ToolWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToolWindow.cpp; path = curves/ToolWindow.cpp; sourceTree = "<group>"; };
+		863C4E0A19E3316A00E4A82D /* ToolWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToolWindow.h; path = curves/ToolWindow.h; sourceTree = "<group>"; };
+		863C4E0C19E3317F00E4A82D /* DrawWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DrawWindow.cpp; path = curves/DrawWindow.cpp; sourceTree = "<group>"; };
+		863C4E0D19E3317F00E4A82D /* DrawWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawWindow.h; path = curves/DrawWindow.h; sourceTree = "<group>"; };
 		866C086719D4225E00D43256 /* crazycurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = crazycurve.cpp; sourceTree = "<group>"; };
 		866C086819D4225E00D43256 /* crazycurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crazycurve.h; sourceTree = "<group>"; };
 		866C086A19D429DB00D43256 /* bezier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bezier.cpp; sourceTree = "<group>"; };
@@ -66,7 +78,7 @@
 		861A88E519CADE4D00E50E6C = {
 			isa = PBXGroup;
 			children = (
-				861A88F019CADE4D00E50E6C /* curves */,
+				863C4DFF19E3310800E4A82D /* Curve Editor */,
 				861A88EF19CADE4D00E50E6C /* Products */,
 				861A890719CAEF2C00E50E6C /* GLUT.framework */,
 				861A890519CAEF2700E50E6C /* OpenGL.framework */,
@@ -84,8 +96,6 @@
 		861A88F019CADE4D00E50E6C /* curves */ = {
 			isa = PBXGroup;
 			children = (
-				861A88F119CADE4D00E50E6C /* main.cpp */,
-				861A88F819CADE8400E50E6C /* float2.h */,
 				861A890019CAE5D300E50E6C /* curve.h */,
 				861A88FF19CAE5D300E50E6C /* curve.cpp */,
 				861A890319CAE5E600E50E6C /* circle.h */,
@@ -100,6 +110,40 @@
 				860955F719DCAEC400ECF43C /* lagrange.cpp */,
 			);
 			path = curves;
+			sourceTree = "<group>";
+		};
+		863C4DFF19E3310800E4A82D /* Curve Editor */ = {
+			isa = PBXGroup;
+			children = (
+				861A88F119CADE4D00E50E6C /* main.cpp */,
+				863C4E1019E333EF00E4A82D /* windows */,
+				861A88F019CADE4D00E50E6C /* curves */,
+				863C4E0F19E333DA00E4A82D /* utils */,
+			);
+			name = "Curve Editor";
+			sourceTree = "<group>";
+		};
+		863C4E0F19E333DA00E4A82D /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				861A88F819CADE8400E50E6C /* float2.h */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		863C4E1019E333EF00E4A82D /* windows */ = {
+			isa = PBXGroup;
+			children = (
+				863C4E0119E3313100E4A82D /* WindowManager.h */,
+				863C4E0019E3313100E4A82D /* WindowManager.cpp */,
+				863C4E0419E3314900E4A82D /* Window.h */,
+				863C4E0319E3314900E4A82D /* Window.cpp */,
+				863C4E0D19E3317F00E4A82D /* DrawWindow.h */,
+				863C4E0C19E3317F00E4A82D /* DrawWindow.cpp */,
+				863C4E0A19E3316A00E4A82D /* ToolWindow.h */,
+				863C4E0919E3316A00E4A82D /* ToolWindow.cpp */,
+			);
+			name = windows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,11 +204,15 @@
 			files = (
 				861A890419CAE5E600E50E6C /* circle.cpp in Sources */,
 				866C086C19D429DB00D43256 /* bezier.cpp in Sources */,
+				863C4E0E19E3317F00E4A82D /* DrawWindow.cpp in Sources */,
 				866C086919D4225E00D43256 /* crazycurve.cpp in Sources */,
 				860955F619DCA45E00ECF43C /* freeform.cpp in Sources */,
+				863C4E0519E3314900E4A82D /* Window.cpp in Sources */,
 				861A88F219CADE4D00E50E6C /* main.cpp in Sources */,
+				863C4E0219E3313100E4A82D /* WindowManager.cpp in Sources */,
 				861A890119CAE5D300E50E6C /* curve.cpp in Sources */,
 				860955F919DCAEC400ECF43C /* lagrange.cpp in Sources */,
+				863C4E0B19E3316A00E4A82D /* ToolWindow.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,15 +14,15 @@
 // CONSTRUCTORS
 ///////////////////////////////////////////////////
 
-Freeform::Freeform(void)
-{
-    
-}
-
-Freeform::Freeform(const Freeform& previous)
-{
-    controlPoints = previous.controlPoints;
-}
+//Freeform::Freeform(void)
+//{
+//    
+//}
+//
+//Freeform::Freeform(const Freeform& previous)
+//{
+//    controlPoints = previous.controlPoints;
+//}
 
 ///////////////////////////////////////////////////
 // DRAWING
@@ -31,7 +31,7 @@ Freeform::Freeform(const Freeform& previous)
 void Freeform::drawControlPoints()
 {
     // draw points at control points
-    int siz = controlPoints.size();
+    int siz = (int)controlPoints.size();
     for (int i = 0; i < siz; i++) {
         glBegin(GL_POLYGON);
         glColor3d(0.0, 1.0, 0.0);
