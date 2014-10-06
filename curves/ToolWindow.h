@@ -13,9 +13,12 @@
 
 #include "Window.h"
 
-class ToolWindow : Window {
+class ToolWindow : public Window {
     
 public:
+    // draws the contents of the window
+    bool draw();
+    
     // all functions inherited from window, need to specify non-virtual and implement
 };
 

@@ -7,3 +7,20 @@
 //
 
 #include "Window.h"
+
+// defaults to not handling the mouse
+bool Window::respondToMouseEvent(int button, int state, float2 point)
+{
+    return false;
+}
+
+// defaults to not handling the move
+bool Window::respondToMoveEvent(float2 point)
+{
+    return false;
+}
+
+bool Window::respondToKeyboardEvent(unsigned char t)
+{
+    return false;
+}

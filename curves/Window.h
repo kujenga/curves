@@ -13,16 +13,17 @@
 //#include <vector>
 
 #include "curve.h"
-#include "float2.h"
 
 class Window
 {
     
 public:
-    virtual void draw();
-    
-    bool respondToMouse(int button, int state, float2 point);
-    bool respondToMove(float2 point);
+    // bool return value indicates whether or not the event should continue to be passed down along the view stack
+    virtual bool draw()=0;
+    // handling of glut events. default to returning false, indicating the window did not absorb the event
+    bool respondToMouseEvent(int button, int state, float2 point);
+    bool respondToMoveEvent(float2 point);
+    bool respondToKeyboardEvent(unsigned char c);
 };
 
 #endif /* defined(__curves__Window__) */

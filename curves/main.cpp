@@ -11,26 +11,10 @@
 
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
-// Download glut from:
-// http://www.opengl.org/resources/libraries/glut/
 #include <GLUT/glut.h>
 
-#include "circle.h"
-#include "crazycurve.h"
-#include "bezier.h"
-#include "lagrange.h"
-
-// modes for creation and editing curves
-typedef enum{
-    circleMode,
-    bezierMode,
-    lagrangeMode
-} curveMode;
-
-typedef enum{
-    createMode,
-    destroyMode,
-} editMode;
+#include "WindowManager.h"
+#include "DrawWindow.h"
 
 // used to generate random points
 #define ARC4RANDOM_MAX 0x100000000
@@ -40,10 +24,7 @@ typedef enum{
 // global variables
 /////////////////////////////////////////////
 
-Freeform *_curve = new Lagrange();
-
-bool _movingPoint = false;
-int _pointIndex = -1;
+WindowManager *mainWindowManager;
 
 /////////////////////////////////////////////
 // utility methods
@@ -65,43 +46,15 @@ float2 pointFromPixels(int x, int y)
 
 void onKeyboard(unsigned char c, int x, int y)
 {
-    switch (c) {
-        case 'l':
-            _curve = new Lagrange();
-            break;
-            
-        case 'b':
-            _curve = new Bezier();
-            break;
-            
-        default:
-            break;
-    }
+    mainWindowManager->onKeyboard(c, x, y);
 }
 
 void onMove(int x, int y) {
-    if (_movingPoint && _pointIndex >= -1) {
-        _curve->moveControlPoint(_pointIndex, pointFromPixels(x, y));
-        glutPostRedisplay();
-    }
+    mainWindowManager->onMove(pointFromPixels(x, y));
 }
 
 void onMouse(int button, int state, int x, int y) {
-    if (state == GLUT_DOWN) {
-        float2 selectedPoint = pointFromPixels(x, y);
-        int existing = _curve->currentControlPoint(selectedPoint);
-        if (existing != -1) {
-            printf("found a point! state: %i",GLUT_DOWN);
-            _movingPoint = true;
-            _pointIndex = existing;
-        } else {//if (button == GLUT_RIGHT_BUTTON) {
-            _curve->addControlPoint(selectedPoint);
-        }
-        glutPostRedisplay();
-    } else if (state == GLUT_UP) {
-        _movingPoint = false;
-        _pointIndex = -1;
-    }
+    mainWindowManager->onMouse(button, state, pointFromPixels(x, y));
 }
 
 void onIdle()
@@ -111,22 +64,10 @@ void onIdle()
 
 void onDisplay()
 {
-    
-    glClearColor(0.4f, 0.7f, 0.9f, 0.5f);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-
-    //c.setValues(0.3, 0.0, 0.5);
-    glColor3d(1.0, 1.0, 1.0);
-    _curve->draw();
-    _curve->drawControlPoints();
-    
-    // draws time-animated tracker point
-    int t = glutGet(GLUT_ELAPSED_TIME);
-    float drawt = (float)(t%10000) / 10000.0;
-    _curve->drawTracker(drawt);
-    _curve->drawTangent(drawt);
-    
+    mainWindowManager->onDisplay();
     glutSwapBuffers();
 }
 
@@ -134,11 +75,13 @@ void onDisplay()
 // main function
 /////////////////////////////////////////////
 
-int main(int argc, char * argv[]) {
-    // creates a circle (on the stack) and draws it
-    for (int i = 0; i < 3; i++) {
-        _curve->addControlPoint(float2(LITTLE_RAND, LITTLE_RAND));
-    }
+int main(int argc, char * argv[])
+{
+    // create window manager and push configured windows to its stack
+    mainWindowManager = new WindowManager();
+    
+    DrawWindow *dw = new DrawWindow();
+    mainWindowManager->pushWindow(dw);
     
     glutInit(&argc, argv);
     glutInitWindowSize(480, 480);

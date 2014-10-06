@@ -7,3 +7,8 @@
 //
 
 #include "ToolWindow.h"
+
+bool ToolWindow::draw()
+{
+    return false;
+}
