@@ -14,6 +14,7 @@
 
 #include "Window.h"
 
+
 class DrawWindow : public Window {
     // all the curves contained by the current window
     std::vector<Curve*> curves;
@@ -31,6 +32,7 @@ public:
     // all functions inherited from window, need to specify non-virtual and implement
     bool respondToMouseEvent(int button, int state, float2 point);
     bool respondToMoveEvent(float2 point);
+//    bool respondToKeyboardEvent(unsigned char c);
     bool respondToDisplayEvent();
 };
 

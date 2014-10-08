@@ -10,41 +10,83 @@
 
 #include "freeform.h"
 
-// modes for creation and editing curves
-typedef enum{
-    circleMode,
-    bezierMode,
-    lagrangeMode
-} curveMode;
-
-typedef enum{
-    createMode,
-    destroyMode,
-} editMode;
-
+#include "circle.h"
+#include "bezier.h"
+#include "lagrange.h"
 
 // defaults to not handling the mouse
 bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
 {
-    if (state == GLUT_DOWN) {
-        Freeform *free = dynamic_cast<Freeform*>(curves.at(activeCurveIndex));
-        if (free != nullptr) {
-            int existingIndex = free->currentControlPoint(point);
-            if (existingIndex != -1) {
-                printf("found a point! state: %i",GLUT_DOWN);
-                isDragging = true;
-                activePointIndex = existingIndex;
-            } else {//if (button == GLUT_RIGHT_BUTTON) {
-                free->addControlPoint(point);
+    EditMode appEditMode = Window::applicationStateManager->getEditMode();
+    
+    if (appEditMode == CreateMode) {
+        if (state == GLUT_UP) {
+            Curve *curve;
+            switch (Window::applicationStateManager->getToolType()) {
+                case DrawBezier:
+                    curve = new Bezier();
+                    static_cast<Freeform*>(curve)->addControlPoint(point);
+                    break;
+                case DrawLagrange:
+                    curve = new Lagrange();
+                    static_cast<Freeform*>(curve)->addControlPoint(point);
+                    break;
+                case DrawCircle:
+                    curve = new Circle();
+                    // default radius of 0.25 for now
+                    static_cast<Circle*>(curve)->setValues(point, 0.25);
+                    break;
+                    
+                case DrawPolyline:
+                    curve = nullptr;
+                    // default radius of 0.25 for now
+                    //static_cast<Circle*>(curve)->setValues(point, 0.25);
+                    break;
+                    
+                default:
+                    break;
             }
-            glutPostRedisplay();
-            return true;
+            if (curve != nullptr) {
+                curves.push_back(curve);
+                activeCurveIndex = (int)curves.size() - 1;
+                glutPostRedisplay();
+                Window::applicationStateManager->setEditMode(ModifyMode);
+                return true;
+            }
         }
-    } else if (state == GLUT_UP) {
-        isDragging = false;
-        activePointIndex = -1;
+    } else if (appEditMode == ModifyMode) {
+        if (state == GLUT_DOWN) {
+            Freeform *free = dynamic_cast<Freeform*>(curves.at(activeCurveIndex));
+            if (free != nullptr) {
+                int existingIndex = free->currentControlPoint(point);
+                if (existingIndex != -1) {
+                    isDragging = true;
+                    activePointIndex = existingIndex;
+                } else {//if (button == GLUT_RIGHT_BUTTON) {
+                    free->addControlPoint(point);
+                }
+                glutPostRedisplay();
+                return true;
+            }
+        } else if (state == GLUT_UP) {
+            isDragging = false;
+            activePointIndex = -1;
+        }
+
+    } else if (appEditMode == DestroyMode) {
+        if (state == GLUT_UP) {
+            Freeform *free = dynamic_cast<Freeform*>(curves.at(activeCurveIndex));
+            if (free != nullptr) {
+                int existingIndex = free->currentControlPoint(point);
+                if (existingIndex != -1) {
+                    free->deleteControlPoint(existingIndex);
+                }
+                glutPostRedisplay();
+                return true;
+            }
+        }
     }
-    return false;
+        return false;
 }
 
 // defaults to not handling the move
@@ -90,6 +132,20 @@ bool DrawWindow::respondToDisplayEvent()
 
 bool DrawWindow::draw()
 {
+    for (int i = 0; i < curves.size(); i++) {
+        Curve *cur = curves.at(i);
+        cur->draw();
+        Freeform *free = dynamic_cast<Freeform*>(cur);
+        if (free != nullptr) {
+            free->drawControlPoints();
+        }
+        
+        int t = glutGet(GLUT_ELAPSED_TIME);
+        float drawt = (float)(t%10000) / 10000.0;
+        cur->drawTracker(drawt);
+        cur->drawTangent(drawt);
+    }
+    
     glBegin(GL_POLYGON);
     
     glColor3d(0.9f, 0.1f, 0.3f);

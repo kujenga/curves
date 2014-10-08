@@ -15,11 +15,10 @@
 
 
 class Circle : public Curve {
-    float xVal = 0.0f;
-    float yVal = 0.0f;
+    float2 origin = float2();
     float radius = 1.0f;
 public:
-    void setValues(float x, float y, float radius);
+    void setValues(float2 origin, float radius);
     float2 getPoint(float t);
     float2 getDerivative(float t);
 };

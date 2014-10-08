@@ -20,6 +20,8 @@ public:
     bool draw();
     
     // all functions inherited from window, need to specify non-virtual and implement
+    bool respondToMouseEvent(int button, int state, float2 point);
+    bool respondToKeyboardEvent(unsigned char c);
 };
 
 #endif /* defined(__curves__ToolWindow__) */

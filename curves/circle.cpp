@@ -10,16 +10,15 @@
 
 #include "circle.h"
 
-void Circle::setValues(float x, float y, float r) {
-    xVal = x;
-    yVal = y;
+void Circle::setValues(float2 org, float r) {
+    origin = org;
     radius = r;
 }
 
 float2 Circle::getPoint(float t)
 {
-    float xCur = radius*sinf(2*M_PI*t)+xVal;
-    float yCur = radius*cosf(2*M_PI*t)+yVal;
+    float xCur = radius*sinf(2*M_PI*t)+origin.x;
+    float yCur = radius*cosf(2*M_PI*t)+origin.y;
     return float2(xCur, yCur);
 }
 

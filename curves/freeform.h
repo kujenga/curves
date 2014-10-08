@@ -26,6 +26,12 @@ public:
     {
         controlPoints.push_back(p);
     }
+    virtual void deleteControlPoint(int indx)
+    {
+        printf("%lu\n",controlPoints.size());
+//        controlPoints.erase(controlPoints.begin() + indx);
+        printf("%lu\n",controlPoints.size());
+    }
     // returns hidden index of point, or -1 if not found
     int currentControlPoint(float2 test);
     const std::vector<float2> controlPointVector()

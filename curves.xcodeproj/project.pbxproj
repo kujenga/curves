@@ -20,6 +20,7 @@
 		863C4E0E19E3317F00E4A82D /* DrawWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C4E0C19E3317F00E4A82D /* DrawWindow.cpp */; };
 		866C086919D4225E00D43256 /* crazycurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 866C086719D4225E00D43256 /* crazycurve.cpp */; };
 		866C086C19D429DB00D43256 /* bezier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 866C086A19D429DB00D43256 /* bezier.cpp */; };
+		8678CE9E19E5F5FB00F7E5B8 /* StateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8678CE9C19E5F5FB00F7E5B8 /* StateManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +61,8 @@
 		866C086819D4225E00D43256 /* crazycurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crazycurve.h; sourceTree = "<group>"; };
 		866C086A19D429DB00D43256 /* bezier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bezier.cpp; sourceTree = "<group>"; };
 		866C086B19D429DB00D43256 /* bezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bezier.h; sourceTree = "<group>"; };
+		8678CE9C19E5F5FB00F7E5B8 /* StateManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StateManager.cpp; path = curves/StateManager.cpp; sourceTree = "<group>"; };
+		8678CE9D19E5F5FB00F7E5B8 /* StateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StateManager.h; path = curves/StateManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +139,8 @@
 			children = (
 				863C4E0119E3313100E4A82D /* WindowManager.h */,
 				863C4E0019E3313100E4A82D /* WindowManager.cpp */,
+				8678CE9D19E5F5FB00F7E5B8 /* StateManager.h */,
+				8678CE9C19E5F5FB00F7E5B8 /* StateManager.cpp */,
 				863C4E0419E3314900E4A82D /* Window.h */,
 				863C4E0319E3314900E4A82D /* Window.cpp */,
 				863C4E0D19E3317F00E4A82D /* DrawWindow.h */,
@@ -211,6 +216,7 @@
 				861A88F219CADE4D00E50E6C /* main.cpp in Sources */,
 				863C4E0219E3313100E4A82D /* WindowManager.cpp in Sources */,
 				861A890119CAE5D300E50E6C /* curve.cpp in Sources */,
+				8678CE9E19E5F5FB00F7E5B8 /* StateManager.cpp in Sources */,
 				860955F919DCAEC400ECF43C /* lagrange.cpp in Sources */,
 				863C4E0B19E3316A00E4A82D /* ToolWindow.cpp in Sources */,
 			);

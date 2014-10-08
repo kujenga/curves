@@ -14,7 +14,9 @@
 #include <GLUT/glut.h>
 
 #include "WindowManager.h"
+#include "StateManager.h"
 #include "DrawWindow.h"
+#include "ToolWindow.h"
 
 // used to generate random points
 #define ARC4RANDOM_MAX 0x100000000
@@ -24,7 +26,8 @@
 // global variables
 /////////////////////////////////////////////
 
-WindowManager *mainWindowManager;
+WindowManager *_mainWindowManager;
+StateManager *_mainStateManager;
 
 /////////////////////////////////////////////
 // utility methods
@@ -46,15 +49,15 @@ float2 pointFromPixels(int x, int y)
 
 void onKeyboard(unsigned char c, int x, int y)
 {
-    mainWindowManager->onKeyboard(c, x, y);
+    _mainWindowManager->onKeyboard(c, x, y);
 }
 
 void onMove(int x, int y) {
-    mainWindowManager->onMove(pointFromPixels(x, y));
+    _mainWindowManager->onMove(pointFromPixels(x, y));
 }
 
 void onMouse(int button, int state, int x, int y) {
-    mainWindowManager->onMouse(button, state, pointFromPixels(x, y));
+    _mainWindowManager->onMouse(button, state, pointFromPixels(x, y));
 }
 
 void onIdle()
@@ -67,7 +70,7 @@ void onDisplay()
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    mainWindowManager->onDisplay();
+    _mainWindowManager->onDisplay();
     glutSwapBuffers();
 }
 
@@ -78,10 +81,16 @@ void onDisplay()
 int main(int argc, char * argv[])
 {
     // create window manager and push configured windows to its stack
-    mainWindowManager = new WindowManager();
+    _mainWindowManager = new WindowManager();
+    _mainStateManager = new StateManager();
     
     DrawWindow *dw = new DrawWindow();
-    mainWindowManager->pushWindow(dw);
+    dw->setApplicationStateManager(_mainStateManager);
+    _mainWindowManager->pushWindow(dw);
+    
+    ToolWindow *tw = new ToolWindow();
+    tw->setApplicationStateManager(_mainStateManager);
+    _mainWindowManager->pushWindow(tw);
     
     glutInit(&argc, argv);
     glutInitWindowSize(480, 480);

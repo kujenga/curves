@@ -13,17 +13,20 @@
 //#include <vector>
 
 #include "curve.h"
+#include "StateManager.h"
 
 class Window
 {
-    
+protected:
+    StateManager *applicationStateManager;
 public:
+    void setApplicationStateManager(StateManager *appStateManager) { applicationStateManager = appStateManager; }
     // bool return value indicates whether or not the event should continue to be passed down along the view stack
     virtual bool draw()=0;
     // handling of glut events. default to returning false, indicating the window did not absorb the event
-    bool respondToMouseEvent(int button, int state, float2 point);
-    bool respondToMoveEvent(float2 point);
-    bool respondToKeyboardEvent(unsigned char c);
+    virtual bool respondToMouseEvent(int button, int state, float2 point);
+    virtual bool respondToMoveEvent(float2 point);
+    virtual bool respondToKeyboardEvent(unsigned char c);
 };
 
 #endif /* defined(__curves__Window__) */
