@@ -11,6 +11,7 @@
 void Curve::draw()
 {
     glBegin(GL_LINE_STRIP);
+    glColor3d(1.0, 0.0, 1.0);
     for (float t = 0; t < 1.0; t += STEP) {
         float2 cur = getPoint(t);
         glVertex2d(cur.x, cur.y);

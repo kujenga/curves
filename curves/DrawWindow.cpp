@@ -132,6 +132,25 @@ bool DrawWindow::respondToDisplayEvent()
 
 bool DrawWindow::draw()
 {
+    // draws a checkered background
+    bool wb = true;
+    float step = 0.05;
+    glColor3d(0.9, 0.9, 0.9);
+    for (float x = -1.0; x < 0.99; x += step) {
+        for (float y = -1.0; y < 0.99; y += step) {
+            glBegin(GL_POLYGON);
+            if (wb) {
+                glVertex2d(x, y);
+                glVertex2d(x, y+step);
+                glVertex2d(x+step, y+step);
+                glVertex2d(x+step, y);
+                glEnd();
+            }
+            wb = !wb;
+        }
+        wb = !wb;
+    }
+    
     for (int i = 0; i < curves.size(); i++) {
         Curve *cur = curves.at(i);
         cur->draw();
@@ -146,17 +165,5 @@ bool DrawWindow::draw()
         cur->drawTangent(drawt);
     }
     
-    glBegin(GL_POLYGON);
-    
-    glColor3d(0.9f, 0.1f, 0.3f);
-    glVertex2d(-1.0, -1.0);
-    glColor3d(0.5f, 0.7f, 0.3f);
-    for (int i = -10; i < 10; i++) {
-        i%2 == 0 ? glVertex2d(0.1*i, -0.8) : glVertex2d(0.1*i, -0.5);
-    }
-    glColor3d(0.9f, 0.7f, 0.3f);
-    glVertex2d(1.0, -1.0);
-    
-    glEnd();
     return false;
 }

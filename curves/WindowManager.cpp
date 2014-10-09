@@ -15,7 +15,7 @@
 
 void WindowManager::onKeyboard(unsigned char c, int x, int y)
 {
-    for (int i = 0; i < windowStack.size(); i++) {
+    for (int i = (int)windowStack.size()-1; i >= 0; i--) {
         Window* window = windowStack.at(i);
         bool stopResponding = window->respondToKeyboardEvent(c);
         if (stopResponding) {
@@ -25,7 +25,7 @@ void WindowManager::onKeyboard(unsigned char c, int x, int y)
 }
 
 void WindowManager::onMove(float2 point) {
-    for (int i = 0; i < windowStack.size(); i++) {
+    for (int i = (int)windowStack.size()-1; i >= 0; i--) {
         Window* window = windowStack.at(i);
         bool stopResponding = window->respondToMoveEvent(point);
         if (stopResponding) {
@@ -36,7 +36,7 @@ void WindowManager::onMove(float2 point) {
 }
 
 void WindowManager::onMouse(int button, int state, float2 point) {
-    for (int i = 0; i < windowStack.size(); i++) {
+    for (int i = (int)windowStack.size()-1; i >= 0; i--) {
         Window* window = windowStack.at(i);
         bool stopResponding = window->respondToMouseEvent(button, state, point);
         if (stopResponding) {
@@ -48,11 +48,12 @@ void WindowManager::onMouse(int button, int state, float2 point) {
 
 void WindowManager::onIdle()
 {
-    glutPostRedisplay();
+//    glutPostRedisplay();
 }
 
 void WindowManager::onDisplay()
 {
+    // drawing happens back to front, unlike event passing
     for (int i = 0; i < windowStack.size(); i++) {
         Window* window = windowStack.at(i);
         bool stopResponding = window->draw();

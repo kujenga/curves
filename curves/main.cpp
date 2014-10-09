@@ -90,6 +90,9 @@ int main(int argc, char * argv[])
     
     ToolWindow *tw = new ToolWindow();
     tw->setApplicationStateManager(_mainStateManager);
+    tw->origin = float2(0.0, -0.9);
+    tw->scale = float2(1.0, 0.1);
+    tw->setupViews();
     _mainWindowManager->pushWindow(tw);
     
     glutInit(&argc, argv);

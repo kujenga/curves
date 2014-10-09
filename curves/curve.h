@@ -21,7 +21,7 @@
 
 // resolution of the drawing
 #define STEP 0.01
-#define TRACKER_SIZE 0.05
+#define TRACKER_SIZE 0.03
 
 class Curve
 {

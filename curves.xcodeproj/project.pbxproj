@@ -21,6 +21,8 @@
 		866C086919D4225E00D43256 /* crazycurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 866C086719D4225E00D43256 /* crazycurve.cpp */; };
 		866C086C19D429DB00D43256 /* bezier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 866C086A19D429DB00D43256 /* bezier.cpp */; };
 		8678CE9E19E5F5FB00F7E5B8 /* StateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8678CE9C19E5F5FB00F7E5B8 /* StateManager.cpp */; };
+		8678CEA119E5FE9700F7E5B8 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8678CE9F19E5FE9700F7E5B8 /* View.cpp */; };
+		8678CEA519E60BB300F7E5B8 /* ToolView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8678CEA319E60BB300F7E5B8 /* ToolView.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,6 +65,10 @@
 		866C086B19D429DB00D43256 /* bezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bezier.h; sourceTree = "<group>"; };
 		8678CE9C19E5F5FB00F7E5B8 /* StateManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StateManager.cpp; path = curves/StateManager.cpp; sourceTree = "<group>"; };
 		8678CE9D19E5F5FB00F7E5B8 /* StateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StateManager.h; path = curves/StateManager.h; sourceTree = "<group>"; };
+		8678CE9F19E5FE9700F7E5B8 /* View.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = View.cpp; path = curves/View.cpp; sourceTree = "<group>"; };
+		8678CEA019E5FE9700F7E5B8 /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = View.h; path = curves/View.h; sourceTree = "<group>"; };
+		8678CEA319E60BB300F7E5B8 /* ToolView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToolView.cpp; path = curves/ToolView.cpp; sourceTree = "<group>"; };
+		8678CEA419E60BB300F7E5B8 /* ToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToolView.h; path = curves/ToolView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,7 @@
 			children = (
 				861A88F119CADE4D00E50E6C /* main.cpp */,
 				863C4E1019E333EF00E4A82D /* windows */,
+				8678CEA219E5FEA400F7E5B8 /* views */,
 				861A88F019CADE4D00E50E6C /* curves */,
 				863C4E0F19E333DA00E4A82D /* utils */,
 			);
@@ -149,6 +156,17 @@
 				863C4E0919E3316A00E4A82D /* ToolWindow.cpp */,
 			);
 			name = windows;
+			sourceTree = "<group>";
+		};
+		8678CEA219E5FEA400F7E5B8 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				8678CEA019E5FE9700F7E5B8 /* View.h */,
+				8678CE9F19E5FE9700F7E5B8 /* View.cpp */,
+				8678CEA419E60BB300F7E5B8 /* ToolView.h */,
+				8678CEA319E60BB300F7E5B8 /* ToolView.cpp */,
+			);
+			name = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +233,8 @@
 				863C4E0519E3314900E4A82D /* Window.cpp in Sources */,
 				861A88F219CADE4D00E50E6C /* main.cpp in Sources */,
 				863C4E0219E3313100E4A82D /* WindowManager.cpp in Sources */,
+				8678CEA519E60BB300F7E5B8 /* ToolView.cpp in Sources */,
+				8678CEA119E5FE9700F7E5B8 /* View.cpp in Sources */,
 				861A890119CAE5D300E50E6C /* curve.cpp in Sources */,
 				8678CE9E19E5F5FB00F7E5B8 /* StateManager.cpp in Sources */,
 				860955F919DCAEC400ECF43C /* lagrange.cpp in Sources */,

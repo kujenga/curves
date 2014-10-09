@@ -8,16 +8,46 @@
 
 #include "ToolWindow.h"
 
+
 bool ToolWindow::draw()
 {
+    glBegin(GL_POLYGON);
     
+    glColor3d(0.2, 0.2, 0.2);
+    float2 corner = transformedFloat2(-1.0, 1.0);
+    glVertex2d(corner.x, corner.y);
+    corner = transformedFloat2( 1.0,  1.0);
+    glVertex2d(corner.x, corner.y);
+    corner = transformedFloat2( 1.0, -1.0);
+    glVertex2d(corner.x, corner.y);
+    corner = transformedFloat2(-1.0, -1.0);
+    glVertex2d(corner.x, corner.y);
+    
+    glEnd();
+    
+    for (int i = 0; i < toolViews.size(); i++) {
+        toolViews.at(i)->draw();
+    }
     return false;
 }
 
 bool ToolWindow::respondToMouseEvent(int button, int state, float2 point)
 {
-    if (state == GLUT_UP) {
-        
+    if (pointWithinBounds(point)) {
+        if (state == GLUT_UP) {
+            // iterates over buttons to see which one was clicked, if any
+            for (int i = 0; i < toolViews.size(); i++) {
+                if (toolViews.at(i)->containsPoint(point)) {
+                    toolViews.at(i)->setSelected(true);
+                    // sets tool type in the state manager based on tool type of selected view
+                    ToolType chosenType = toolViews.at(i)->getToolType();
+                    applicationStateManager->setToolType(chosenType);
+                } else {
+                    toolViews.at(i)->setSelected(false);
+                }
+            }
+            return true;
+        }
         return true;
     }
     return false;

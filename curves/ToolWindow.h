@@ -10,12 +10,23 @@
 #define __curves__ToolWindow__
 
 #include <stdio.h>
+#include <vector>
 
 #include "Window.h"
+#include "ToolView.h"
 
 class ToolWindow : public Window {
-    
+    std::vector<ToolView*> toolViews;
 public:
+    void setupViews()
+    {
+        ToolView *view = new ToolView();
+        view->origin = transformedFloat2(0.0, 0.0);
+        view->scale = float2(0.16, 0.8) * scale;
+        view->setToolType(DrawBezier);
+        toolViews.push_back(view);
+    }
+    
     // draws the contents of the window
     bool draw();
     
