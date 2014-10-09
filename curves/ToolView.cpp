@@ -35,7 +35,7 @@ void ToolView::draw()
     
     glColor3d(0.0f, 0.0f, 0.0f);
     glPushMatrix();
-    float2 pos = transformedFloat2(-0.8, -0.2);
+    float2 pos = transformedFloat2(-0.9, -0.2);
     glRasterPos2f(pos.x, pos.y);
     for (char *p = buf; *p; p++)
         glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *p);

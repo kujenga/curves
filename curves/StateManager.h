@@ -13,6 +13,7 @@
 
 // modes for creation and editing curves
 typedef enum {
+    NoneType,
     DrawBezier,
     DrawLagrange,
     DrawCircle,
@@ -20,6 +21,7 @@ typedef enum {
 } ToolType;
 
 typedef enum{
+    SelectMode,
     CreateMode,
     ModifyMode,
     DestroyMode,

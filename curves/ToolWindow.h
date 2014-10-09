@@ -20,11 +20,17 @@ class ToolWindow : public Window {
 public:
     void setupViews()
     {
-        ToolView *view = new ToolView();
-        view->origin = transformedFloat2(0.0, 0.0);
-        view->scale = float2(0.16, 0.8) * scale;
-        view->setToolType(DrawBezier);
-        toolViews.push_back(view);
+        ToolView *bView = new ToolView();
+        bView->origin = transformedFloat2(-0.8, 0.0);
+        bView->scale = float2(0.16, 0.8) * scale;
+        bView->setToolType(DrawBezier);
+        toolViews.push_back(bView);
+        
+        ToolView *lView = new ToolView();
+        lView->origin = transformedFloat2(-0.4, 0.0);
+        lView->scale = float2(0.20, 0.8) * scale;
+        lView->setToolType(DrawLagrange);
+        toolViews.push_back(lView);
     }
     
     // draws the contents of the window

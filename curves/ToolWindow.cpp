@@ -35,6 +35,8 @@ bool ToolWindow::respondToMouseEvent(int button, int state, float2 point)
 {
     if (pointWithinBounds(point)) {
         if (state == GLUT_UP) {
+            // default of nonetype
+            applicationStateManager->setToolType(NoneType);
             // iterates over buttons to see which one was clicked, if any
             for (int i = 0; i < toolViews.size(); i++) {
                 if (toolViews.at(i)->containsPoint(point)) {
