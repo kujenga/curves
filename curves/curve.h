@@ -23,10 +23,10 @@
 #define STEP 0.01
 #define TRACKER_SIZE 0.03
 
-class Curve
-{
-    
+class Curve {
+//    bool selected = false;
 public:
+//    void setSelected(bool select) { selected = select; }
     // instantiated by subclasses to define curve
     virtual float2 getPoint(float t)=0;
     virtual float2 getDerivative(float t)=0;

@@ -17,10 +17,7 @@
 class Freeform : public Curve {
 protected:
     std::vector<float2> controlPoints;
-public:
-//    Freeform(void);
-//    Freeform(const Freeform& previous);
-    
+public:    
     virtual float2 getPoint(float t)=0;
     virtual void addControlPoint(float2 p)
     {
