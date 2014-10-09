@@ -69,6 +69,7 @@
 		8678CEA019E5FE9700F7E5B8 /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = View.h; path = curves/View.h; sourceTree = "<group>"; };
 		8678CEA319E60BB300F7E5B8 /* ToolView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToolView.cpp; path = curves/ToolView.cpp; sourceTree = "<group>"; };
 		8678CEA419E60BB300F7E5B8 /* ToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToolView.h; path = curves/ToolView.h; sourceTree = "<group>"; };
+		8678CEA619E686DD00F7E5B8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +88,7 @@
 		861A88E519CADE4D00E50E6C = {
 			isa = PBXGroup;
 			children = (
+				8678CEA619E686DD00F7E5B8 /* README.md */,
 				863C4DFF19E3310800E4A82D /* Curve Editor */,
 				861A88EF19CADE4D00E50E6C /* Products */,
 				861A890719CAEF2C00E50E6C /* GLUT.framework */,

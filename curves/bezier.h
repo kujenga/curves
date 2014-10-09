@@ -18,8 +18,8 @@
 class Bezier : public Freeform {
 public:
     // calls superclass constructor
-//    Bezier(void) : Freeform() {}
-//    Bezier(const Freeform& previous) : Freeform(previous) {}
+    Bezier(void) : Freeform() {}
+    Bezier(const Freeform& previous) : Freeform(previous) {}
     
     void addControlPoint(float2 p);
     

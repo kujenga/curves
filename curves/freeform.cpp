@@ -14,15 +14,15 @@
 // CONSTRUCTORS
 ///////////////////////////////////////////////////
 
-//Freeform::Freeform(void)
-//{
-//    
-//}
-//
-//Freeform::Freeform(const Freeform& previous)
-//{
-//    controlPoints = previous.controlPoints;
-//}
+Freeform::Freeform(void)
+{
+    
+}
+
+Freeform::Freeform(const Freeform& previous)
+{
+    controlPoints = previous.controlPoints;
+}
 
 ///////////////////////////////////////////////////
 // DRAWING

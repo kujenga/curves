@@ -16,15 +16,7 @@
 
 
 class DrawWindow : public Window {
-    // all the curves contained by the current window
-    std::vector<Curve*> curves;
     
-    // index of the currently active curve
-    int activeCurveIndex;
-    // index of the currently active point along the curve
-    int activePointIndex;
-    // whether or not a point along the active curve is currently being dragged
-    bool isDragging;
 public:
     // draws the contents of the window
     bool draw();

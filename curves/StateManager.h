@@ -10,6 +10,8 @@
 #define __curves__StateManager__
 
 #include <stdio.h>
+#include <vector>
+#include "curve.h"
 
 // modes for creation and editing curves
 typedef enum {
@@ -32,6 +34,16 @@ class StateManager {
     EditMode applicationEditMode = CreateMode;
     
 public:
+    // all the curves created within the application
+    std::vector<Curve*> curves;
+    
+    // index of the currently active curve
+    int activeCurveIndex;
+    // index of the currently active point along the curve
+    int activePointIndex;
+    // whether or not a point along the active curve is currently being dragged
+    bool isDragging;
+
     ToolType getToolType() { return applicationToolType; }
     EditMode getEditMode() { return applicationEditMode; }
     

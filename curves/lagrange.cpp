@@ -8,21 +8,29 @@
 
 #include "lagrange.h"
 
-//Lagrange::Lagrange(const Freeform& previous)
-//{
-//    for (int i = 0; i < previous.controlPointVector().size(); i++) {
-//        addControlPoint(previous.controlPointVector().at(i));
+Lagrange::Lagrange(const Freeform& previous)
+{
+//    const int siz = previous.controlPointVectorSize()
+//    for (int i = 0; i < siz; i++) {
+//        controlPoints.push_back(previous.controlPointVectorElement(i));
+//        knots.push_back(1.0);
 //    }
-//}
+//    rescaleKnots();
+}
+
+void Lagrange::rescaleKnots()
+{
+    for (int i = 0; i < knots.size(); i++) {
+        knots.at(i) = (float)i / (float)(fmax(knots.size()-1,1.0));
+    }
+}
 
 void Lagrange::addControlPoint(float2 p)
 {
     controlPoints.push_back(p);
     knots.push_back(1.0);
-    // scale the knots
-    for (int i = 0; i < knots.size(); i++) {
-        knots.at(i) = (float)i / (float)(fmax(knots.size()-1,1.0));
-    }
+    // scale the knots again with new length
+    rescaleKnots();
 }
 
 double Lagrange::lagrange(int i, double t) {

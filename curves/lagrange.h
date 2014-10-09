@@ -18,10 +18,11 @@ class Lagrange : public Freeform {
 protected:
     std::vector<float> knots;
     double lagrange(int n, double t);
+    void rescaleKnots();
 public:
     // calls superclass constructor
-//    Lagrange(void) : Freeform() {}
-//    Lagrange(const Freeform& previous);
+    Lagrange(void) : Freeform() {}
+    Lagrange(const Freeform& previous);
     
     void addControlPoint(float2 p);
     

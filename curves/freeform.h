@@ -17,7 +17,11 @@
 class Freeform : public Curve {
 protected:
     std::vector<float2> controlPoints;
-public:    
+public:
+    // constructors
+    Freeform(void);
+    Freeform(const Freeform& previous);
+    // point manipulation
     virtual float2 getPoint(float t)=0;
     virtual void addControlPoint(float2 p)
     {
@@ -26,17 +30,18 @@ public:
     virtual void deleteControlPoint(int indx)
     {
         printf("%lu\n",controlPoints.size());
-//        controlPoints.erase(controlPoints.begin() + indx);
+        controlPoints.erase(controlPoints.begin() + indx);
         printf("%lu\n",controlPoints.size());
     }
     // returns hidden index of point, or -1 if not found
     int currentControlPoint(float2 test);
-    const std::vector<float2> controlPointVector()
-    {
-        return controlPoints;
-    }
+
     void moveControlPoint(int i, float2 pos);
     void drawControlPoints();
+    
+    // const getter methods for the vector
+    const int controlPointVectorSize() { return (int)controlPoints.size(); }
+    const float2 controlPointVectorElement(int i) { return controlPoints.at(i); }
 };
 
 #endif /* defined(__curves__freeform__) */
