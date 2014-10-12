@@ -43,10 +43,10 @@ bool ToolWindow::respondToMouseEvent(int button, int state, float2 point)
                     toolViews.at(i)->setSelected(true);
                     // sets tool type in the state manager based on tool type of selected view
                     ToolType chosenType = toolViews.at(i)->getToolType();
-//                    if (chosenType != applicationStateManager->getToolType()) {
-//                        // if modes are changed, begin creating a new object
-//                        applicationStateManager->setEditMode(CreateMode);
-//                    }
+                    if (chosenType != applicationStateManager->getToolType()) {
+                        // if modes are changed, begin creating a new object
+                        applicationStateManager->setEditMode(CreateMode);
+                    }
                     applicationStateManager->setToolType(chosenType);
                 } else {
                     toolViews.at(i)->setSelected(false);
@@ -70,6 +70,16 @@ bool ToolWindow::respondToKeyboardEvent(unsigned char c)
             Window::applicationStateManager->setEditMode(DestroyMode);
             return true;
             
+        case 'r': {
+            Curve* active = Window::applicationStateManager->activeCurve();
+            active->rotation = 0.25*M_PI;
+            return true;
+        }
+        case 't': {
+            Curve* active = Window::applicationStateManager->activeCurve();
+            active->translation = float2(0.5, 0.5);
+            return true;
+        }
         default:
             return false;
     }

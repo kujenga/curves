@@ -43,6 +43,8 @@ public:
     int activePointIndex;
     // whether or not a point along the active curve is currently being dragged
     bool isDragging;
+    
+    Curve* activeCurve() { return curves.at(activeCurveIndex); }
 
     ToolType getToolType() { return applicationToolType; }
     EditMode getEditMode() { return applicationEditMode; }

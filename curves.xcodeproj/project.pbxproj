@@ -23,6 +23,10 @@
 		8678CE9E19E5F5FB00F7E5B8 /* StateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8678CE9C19E5F5FB00F7E5B8 /* StateManager.cpp */; };
 		8678CEA119E5FE9700F7E5B8 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8678CE9F19E5FE9700F7E5B8 /* View.cpp */; };
 		8678CEA519E60BB300F7E5B8 /* ToolView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8678CEA319E60BB300F7E5B8 /* ToolView.cpp */; };
+		8678CEAA19E69EAE00F7E5B8 /* ModeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8678CEA819E69EAE00F7E5B8 /* ModeView.cpp */; };
+		86F890E619EAF8BE00D1E5D0 /* catmullclark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86F890E419EAF8BE00D1E5D0 /* catmullclark.cpp */; };
+		86F890E919EAF8C700D1E5D0 /* catmullrom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86F890E719EAF8C700D1E5D0 /* catmullrom.cpp */; };
+		86F890EC19EAF8E600D1E5D0 /* hermiteinterp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86F890EA19EAF8E600D1E5D0 /* hermiteinterp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,6 +74,14 @@
 		8678CEA319E60BB300F7E5B8 /* ToolView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToolView.cpp; path = curves/ToolView.cpp; sourceTree = "<group>"; };
 		8678CEA419E60BB300F7E5B8 /* ToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToolView.h; path = curves/ToolView.h; sourceTree = "<group>"; };
 		8678CEA619E686DD00F7E5B8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8678CEA819E69EAE00F7E5B8 /* ModeView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModeView.cpp; path = curves/ModeView.cpp; sourceTree = "<group>"; };
+		8678CEA919E69EAE00F7E5B8 /* ModeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModeView.h; path = curves/ModeView.h; sourceTree = "<group>"; };
+		86F890E419EAF8BE00D1E5D0 /* catmullclark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = catmullclark.cpp; sourceTree = "<group>"; };
+		86F890E519EAF8BE00D1E5D0 /* catmullclark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = catmullclark.h; sourceTree = "<group>"; };
+		86F890E719EAF8C700D1E5D0 /* catmullrom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = catmullrom.cpp; sourceTree = "<group>"; };
+		86F890E819EAF8C700D1E5D0 /* catmullrom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = catmullrom.h; sourceTree = "<group>"; };
+		86F890EA19EAF8E600D1E5D0 /* hermiteinterp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hermiteinterp.cpp; sourceTree = "<group>"; };
+		86F890EB19EAF8E600D1E5D0 /* hermiteinterp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hermiteinterp.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +131,12 @@
 				866C086A19D429DB00D43256 /* bezier.cpp */,
 				860955F819DCAEC400ECF43C /* lagrange.h */,
 				860955F719DCAEC400ECF43C /* lagrange.cpp */,
+				86F890E519EAF8BE00D1E5D0 /* catmullclark.h */,
+				86F890E419EAF8BE00D1E5D0 /* catmullclark.cpp */,
+				86F890E819EAF8C700D1E5D0 /* catmullrom.h */,
+				86F890E719EAF8C700D1E5D0 /* catmullrom.cpp */,
+				86F890EB19EAF8E600D1E5D0 /* hermiteinterp.h */,
+				86F890EA19EAF8E600D1E5D0 /* hermiteinterp.cpp */,
 			);
 			path = curves;
 			sourceTree = "<group>";
@@ -167,6 +185,8 @@
 				8678CE9F19E5FE9700F7E5B8 /* View.cpp */,
 				8678CEA419E60BB300F7E5B8 /* ToolView.h */,
 				8678CEA319E60BB300F7E5B8 /* ToolView.cpp */,
+				8678CEA919E69EAE00F7E5B8 /* ModeView.h */,
+				8678CEA819E69EAE00F7E5B8 /* ModeView.cpp */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -227,7 +247,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86F890E619EAF8BE00D1E5D0 /* catmullclark.cpp in Sources */,
 				861A890419CAE5E600E50E6C /* circle.cpp in Sources */,
+				8678CEAA19E69EAE00F7E5B8 /* ModeView.cpp in Sources */,
 				866C086C19D429DB00D43256 /* bezier.cpp in Sources */,
 				863C4E0E19E3317F00E4A82D /* DrawWindow.cpp in Sources */,
 				866C086919D4225E00D43256 /* crazycurve.cpp in Sources */,
@@ -239,6 +261,8 @@
 				8678CEA119E5FE9700F7E5B8 /* View.cpp in Sources */,
 				861A890119CAE5D300E50E6C /* curve.cpp in Sources */,
 				8678CE9E19E5F5FB00F7E5B8 /* StateManager.cpp in Sources */,
+				86F890EC19EAF8E600D1E5D0 /* hermiteinterp.cpp in Sources */,
+				86F890E919EAF8C700D1E5D0 /* catmullrom.cpp in Sources */,
 				860955F919DCAEC400ECF43C /* lagrange.cpp in Sources */,
 				863C4E0B19E3316A00E4A82D /* ToolWindow.cpp in Sources */,
 			);

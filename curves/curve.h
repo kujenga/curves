@@ -24,17 +24,25 @@
 #define TRACKER_SIZE 0.03
 
 class Curve {
-//    bool selected = false;
+    bool selected = false;
 public:
-//    void setSelected(bool select) { selected = select; }
+    void setSelected(bool select) { selected = select; }
     // instantiated by subclasses to define curve
     virtual float2 getPoint(float t)=0;
     virtual float2 getDerivative(float t)=0;
+    
+    // methods for selection of the line
+    float distFromCurve(float2 point);
     
     // curve functions that utilize virtual functions to draw the defined curve
     void draw();
     void drawTracker(float t);
     void drawTangent(float t);
+    
+    // variables for manipulating the curve
+    float2 translation = float2();
+    float rotation = 0.0;
+    float2 rotationOrigin = float2();
 };
 
 #endif /* defined(__curves__curve__) */
