@@ -44,6 +44,9 @@ public:
     // whether or not a point along the active curve is currently being dragged
     bool isDragging;
     
+    // whether or not trackers should be displayed
+    bool showTrackers;
+    
     Curve* activeCurve() { return curves.at(activeCurveIndex); }
 
     ToolType getToolType() { return applicationToolType; }

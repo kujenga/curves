@@ -32,7 +32,7 @@ protected:
         return horizontal && vertical;
     }
 public:
-    void setApplicationStateManager(StateManager *appStateManager) { appStateManager = appStateManager; }
+    void setApplicationStateManager(StateManager *theAppStateManager) { appStateManager = theAppStateManager; }
     
     // used to modify position and shape of the window if they are used by the subclass implementation
     float2 origin = float2();

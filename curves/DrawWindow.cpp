@@ -11,8 +11,12 @@
 #include "freeform.h"
 
 #include "circle.h"
+#include "polyline.h"
 #include "bezier.h"
 #include "lagrange.h"
+#include "catmullclark.h"
+#include "catmullrom.h"
+#include "hermiteinterp.h"
 
 // defaults to not handling the mouse
 bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
@@ -39,9 +43,8 @@ bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
                     break;
                     
                 case DrawPolyline:
-                    curve = nullptr;
-                    // default radius of 0.25 for now
-                    //static_cast<Circle*>(curve)->setValues(point, 0.25);
+                    curve = new Polyline;
+                    static_cast<Polyline*>(curve)->addControlPoint(point);
                     break;
                     
                 default:
@@ -64,7 +67,7 @@ bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
                 int existingIndex = free->currentControlPoint(point);
                 if (existingIndex != -1) {
                     appStateManager->isDragging = true;
-                    appStateManager->activeCurveIndex = existingIndex;
+                    appStateManager->activePointIndex = existingIndex;
                 } else {//if (button == GLUT_RIGHT_BUTTON) {
                     free->addControlPoint(point);
                 }
@@ -121,11 +124,13 @@ bool DrawWindow::respondToDisplayEvent()
         glColor3d(1.0, 1.0, 1.0);
         curve->draw();
         
-        // draws time-animated tracker point
-        int t = glutGet(GLUT_ELAPSED_TIME);
-        float drawt = (float)(t%10000) / 10000.0;
-        curve->drawTracker(drawt);
-        curve->drawTangent(drawt);
+        if (appStateManager->showTrackers) {
+            // draws time-animated tracker point
+            int t = glutGet(GLUT_ELAPSED_TIME);
+            float drawt = (float)(t%10000) / 10000.0;
+            curve->drawTracker(drawt);
+            curve->drawTangent(drawt);
+        }
         
         Freeform *free = dynamic_cast<Freeform*>(appStateManager->curves.at(appStateManager->activeCurveIndex));
         if (free != nullptr) {

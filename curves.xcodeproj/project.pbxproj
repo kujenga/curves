@@ -24,6 +24,7 @@
 		8678CEA119E5FE9700F7E5B8 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8678CE9F19E5FE9700F7E5B8 /* View.cpp */; };
 		8678CEA519E60BB300F7E5B8 /* ToolView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8678CEA319E60BB300F7E5B8 /* ToolView.cpp */; };
 		8678CEAA19E69EAE00F7E5B8 /* ModeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8678CEA819E69EAE00F7E5B8 /* ModeView.cpp */; };
+		86B91CE319EF0CA4004FE5B5 /* polyline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86B91CE119EF0CA4004FE5B5 /* polyline.cpp */; };
 		86F890E619EAF8BE00D1E5D0 /* catmullclark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86F890E419EAF8BE00D1E5D0 /* catmullclark.cpp */; };
 		86F890E919EAF8C700D1E5D0 /* catmullrom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86F890E719EAF8C700D1E5D0 /* catmullrom.cpp */; };
 		86F890EC19EAF8E600D1E5D0 /* hermiteinterp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86F890EA19EAF8E600D1E5D0 /* hermiteinterp.cpp */; };
@@ -76,6 +77,8 @@
 		8678CEA619E686DD00F7E5B8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8678CEA819E69EAE00F7E5B8 /* ModeView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModeView.cpp; path = curves/ModeView.cpp; sourceTree = "<group>"; };
 		8678CEA919E69EAE00F7E5B8 /* ModeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModeView.h; path = curves/ModeView.h; sourceTree = "<group>"; };
+		86B91CE119EF0CA4004FE5B5 /* polyline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = polyline.cpp; sourceTree = "<group>"; };
+		86B91CE219EF0CA4004FE5B5 /* polyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = polyline.h; sourceTree = "<group>"; };
 		86F890E419EAF8BE00D1E5D0 /* catmullclark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = catmullclark.cpp; sourceTree = "<group>"; };
 		86F890E519EAF8BE00D1E5D0 /* catmullclark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = catmullclark.h; sourceTree = "<group>"; };
 		86F890E719EAF8C700D1E5D0 /* catmullrom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = catmullrom.cpp; sourceTree = "<group>"; };
@@ -127,6 +130,8 @@
 				866C086719D4225E00D43256 /* crazycurve.cpp */,
 				860955F519DCA45E00ECF43C /* freeform.h */,
 				860955F419DCA45E00ECF43C /* freeform.cpp */,
+				86B91CE219EF0CA4004FE5B5 /* polyline.h */,
+				86B91CE119EF0CA4004FE5B5 /* polyline.cpp */,
 				866C086B19D429DB00D43256 /* bezier.h */,
 				866C086A19D429DB00D43256 /* bezier.cpp */,
 				860955F819DCAEC400ECF43C /* lagrange.h */,
@@ -248,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86F890E619EAF8BE00D1E5D0 /* catmullclark.cpp in Sources */,
+				86B91CE319EF0CA4004FE5B5 /* polyline.cpp in Sources */,
 				861A890419CAE5E600E50E6C /* circle.cpp in Sources */,
 				8678CEAA19E69EAE00F7E5B8 /* ModeView.cpp in Sources */,
 				866C086C19D429DB00D43256 /* bezier.cpp in Sources */,

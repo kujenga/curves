@@ -62,14 +62,30 @@ bool ToolWindow::respondToMouseEvent(int button, int state, float2 point)
 bool ToolWindow::respondToKeyboardEvent(unsigned char c)
 {
     switch (c) {
+        // change application modes
         case 'n':
             Window::appStateManager->setEditMode(CreateMode);
             return true;
-            
         case 'd':
             Window::appStateManager->setEditMode(DestroyMode);
             return true;
+        case 's':
+            Window::appStateManager->showTrackers = !Window::appStateManager->showTrackers;
+            return true;
             
+        
+        // set line type
+        case 'p':
+            Window::appStateManager->setToolType(DrawPolyline);
+            return true;
+        case 'b':
+            Window::appStateManager->setToolType(DrawBezier);
+            return true;
+        case 'l':
+            Window::appStateManager->setToolType(DrawLagrange);
+            return true;
+            
+        // perform transformations
         case 'r': {
             Curve* active = Window::appStateManager->activeCurve();
             active->rotation = 0.25*M_PI;
