@@ -19,7 +19,7 @@ class Window
 {
 protected:
     
-    StateManager *applicationStateManager;
+    StateManager *appStateManager;
     
     float2 transformedFloat2(float x, float y)
     {
@@ -32,7 +32,7 @@ protected:
         return horizontal && vertical;
     }
 public:
-    void setApplicationStateManager(StateManager *appStateManager) { applicationStateManager = appStateManager; }
+    void setApplicationStateManager(StateManager *appStateManager) { appStateManager = appStateManager; }
     
     // used to modify position and shape of the window if they are used by the subclass implementation
     float2 origin = float2();

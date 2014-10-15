@@ -36,18 +36,18 @@ bool ToolWindow::respondToMouseEvent(int button, int state, float2 point)
     if (pointWithinBounds(point)) {
         if (state == GLUT_UP) {
             // default of nonetype
-            applicationStateManager->setToolType(NoneType);
+            appStateManager->setToolType(NoneType);
             // iterates over buttons to see which one was clicked, if any
             for (int i = 0; i < toolViews.size(); i++) {
                 if (toolViews.at(i)->containsPoint(point)) {
                     toolViews.at(i)->setSelected(true);
                     // sets tool type in the state manager based on tool type of selected view
                     ToolType chosenType = toolViews.at(i)->getToolType();
-                    if (chosenType != applicationStateManager->getToolType()) {
+                    if (chosenType != appStateManager->getToolType()) {
                         // if modes are changed, begin creating a new object
-                        applicationStateManager->setEditMode(CreateMode);
+                        appStateManager->setEditMode(CreateMode);
                     }
-                    applicationStateManager->setToolType(chosenType);
+                    appStateManager->setToolType(chosenType);
                 } else {
                     toolViews.at(i)->setSelected(false);
                 }
@@ -63,20 +63,20 @@ bool ToolWindow::respondToKeyboardEvent(unsigned char c)
 {
     switch (c) {
         case 'n':
-            Window::applicationStateManager->setEditMode(CreateMode);
+            Window::appStateManager->setEditMode(CreateMode);
             return true;
             
         case 'd':
-            Window::applicationStateManager->setEditMode(DestroyMode);
+            Window::appStateManager->setEditMode(DestroyMode);
             return true;
             
         case 'r': {
-            Curve* active = Window::applicationStateManager->activeCurve();
+            Curve* active = Window::appStateManager->activeCurve();
             active->rotation = 0.25*M_PI;
             return true;
         }
         case 't': {
-            Curve* active = Window::applicationStateManager->activeCurve();
+            Curve* active = Window::appStateManager->activeCurve();
             active->translation = float2(0.5, 0.5);
             return true;
         }

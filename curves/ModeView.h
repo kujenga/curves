@@ -17,7 +17,7 @@
 class ModeView : public View {
     
 public:
-    StateManager *applicationStateManager;
+    StateManager *appStateManager;
     void draw();
 };
 

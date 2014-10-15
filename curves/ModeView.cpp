@@ -16,7 +16,7 @@ void ModeView::draw()
     char buf[BUFSIZ];
     
     // hardcoded images for each tool type
-    switch (applicationStateManager->getEditMode()) {
+    switch (appStateManager->getEditMode()) {
         case CreateMode:
             snprintf(buf, sizeof(buf), "Create");
             break;

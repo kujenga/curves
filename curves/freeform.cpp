@@ -30,6 +30,7 @@ Freeform::Freeform(const Freeform& previous)
 
 void Freeform::drawControlPoints()
 {
+    performTransformations();
     // draw points at control points
     int siz = (int)controlPoints.size();
     for (int i = 0; i < siz; i++) {
@@ -42,6 +43,7 @@ void Freeform::drawControlPoints()
         glVertex2d(cur.x, cur.y - TRACKER_SIZE);
         glEnd();
     }
+    inverseTransformations();
 }
 
 ///////////////////////////////////////////////////

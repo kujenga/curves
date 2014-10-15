@@ -23,8 +23,23 @@
 #define STEP 0.01
 #define TRACKER_SIZE 0.03
 
+struct Color {
+    float r;
+    float g;
+    float b;
+    Color(float rVal, float gVal, float bVal) {
+        r = rVal;
+        g = gVal;
+        b = bVal;
+    }
+};
+
 class Curve {
+protected:
     bool selected = false;
+    
+    void performTransformations();
+    void inverseTransformations();
 public:
     void setSelected(bool select) { selected = select; }
     // instantiated by subclasses to define curve
@@ -40,6 +55,7 @@ public:
     void drawTangent(float t);
     
     // variables for manipulating the curve
+    Color lineColor = Color(1.0, 0.0, 1.0);
     float2 translation = float2();
     float rotation = 0.0;
     float2 rotationOrigin = float2();

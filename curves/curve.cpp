@@ -10,6 +10,18 @@
 
 #define DIST_STEPS 100
 
+void Curve::performTransformations()
+{
+    glTranslatef(translation.x, translation.y, 0.0);
+    glRotatef(360.0*rotation/M_PI, rotationOrigin.x, rotationOrigin.y, 1.0);
+}
+
+void Curve::inverseTransformations()
+{
+    glTranslatef(-translation.x, -translation.y, 0.0);
+    glRotatef(-360.0*rotation/M_PI, -rotationOrigin.x, -rotationOrigin.y, 1.0);
+}
+
 // non-optimized, maybe possible to use the tangent function to find normal intersection in O(1) time rather than O(n) for n points along the curve
 float Curve::distFromCurve(float2 point)
 {
@@ -30,27 +42,25 @@ float Curve::distFromCurve(float2 point)
 
 void Curve::draw()
 {
+    performTransformations();
     glBegin(GL_LINE_STRIP);
-    glTranslatef(translation.x, translation.y, 0.0);
-    glRotatef(360.0*rotation/M_PI, rotationOrigin.x, rotationOrigin.y, 0.0);
     if (selected) {
         glColor3d(1.0, 1.0, 0.0);
     } else {
-        glColor3d(1.0, 0.0, 1.0);
+        glColor3d(lineColor.r, lineColor.g, lineColor.b);
     }
     for (float t = 0; t < 1.0; t += STEP) {
         float2 cur = getPoint(t);
         glVertex2d(cur.x, cur.y);
     }
     glEnd();
+    inverseTransformations();
 }
 
 void Curve::drawTracker(float t)
 {
+    performTransformations();
     glBegin(GL_POLYGON);
-    glTranslatef(translation.x, translation.y, 0.0);
-    glRotatef(360.0*rotation/M_PI, rotationOrigin.x, rotationOrigin.y, 0.0);
-    
     glColor3d(1.0, 0.0, 0.0);
     float2 cur = getPoint(t);
     glVertex2d(cur.x - TRACKER_SIZE, cur.y);
@@ -58,13 +68,13 @@ void Curve::drawTracker(float t)
     glVertex2d(cur.x + TRACKER_SIZE, cur.y);
     glVertex2d(cur.x, cur.y - TRACKER_SIZE);
     glEnd();
+    inverseTransformations();
 }
 
 void Curve::drawTangent(float t)
 {
+    performTransformations();
     glBegin(GL_LINES);
-    glTranslatef(translation.x, translation.y, 0.0);
-    glRotatef(360.0*rotation/M_PI, rotationOrigin.x, rotationOrigin.y, 0.0);
     glColor3d(1.0, 0.0, 0.0);
     float2 curP = getPoint(t);
     float2 start = curP - getDerivative(t);
@@ -72,4 +82,5 @@ void Curve::drawTangent(float t)
     glVertex2d(start.x, start.y);
     glVertex2d(end.x, end.y);
     glEnd();
+    inverseTransformations();
 }
