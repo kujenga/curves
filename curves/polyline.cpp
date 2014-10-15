@@ -13,6 +13,11 @@ void Polyline::addControlPoint(float2 p)
     controlPoints.push_back(p);
 }
 
+void Polyline::insertControlPoint(int pos, float2 point)
+{
+    controlPoints.insert(controlPoints.begin() + pos, point);
+}
+
 float2 Polyline::getPoint(float t)
 {
     float numPoints = (float)controlPointVectorSize();

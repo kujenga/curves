@@ -12,10 +12,15 @@
 #include <stdio.h>
 
 #include "freeform.h"
+#include "polyline.h"
+
+#define MESH_STEPS 4
 
 class CatmullClark : public Freeform {
 protected:
-    
+    // holds the subdivided mesh points and handles all value calculation based on those
+    Polyline holder = Polyline();
+    void recomputeHolder(int depth);
 public:
     // calls superclass constructor
     CatmullClark(void) : Freeform() {}

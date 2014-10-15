@@ -20,6 +20,7 @@ public:
     Polyline(const Freeform& previous) : Freeform(previous) {}
     
     void addControlPoint(float2 p);
+    void insertControlPoint(int pos, float2 point);
     
     float2 getPoint(float t);
     float2 getDerivative(float t);
