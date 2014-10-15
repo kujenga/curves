@@ -7,3 +7,10 @@
 //
 
 #include "StateManager.h"
+
+void StateManager::setToActiveCurve(int pos)
+{
+    activeCurve()->setSelected(false);
+    activeCurveIndex = pos;
+    activeCurve()->setSelected(true);
+}

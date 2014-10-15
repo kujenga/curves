@@ -68,6 +68,7 @@ void WindowManager::pushWindow(Window* window)
 {
     windowStack.push_back(window);
 }
+
 Window* WindowManager::popWindow()
 {
     Window *back = windowStack.back();

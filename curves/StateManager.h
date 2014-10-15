@@ -51,6 +51,7 @@ public:
     bool showTrackers;
     
     Curve* activeCurve() { return curves.at(activeCurveIndex); }
+    void setToActiveCurve(int pos);
 
     ToolType getToolType() { return applicationToolType; }
     EditMode getEditMode() { return applicationEditMode; }

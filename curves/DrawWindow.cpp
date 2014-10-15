@@ -32,10 +32,12 @@ bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
                     curve = new Bezier();
                     static_cast<Bezier*>(curve)->addControlPoint(point);
                     break;
+                    
                 case DrawLagrange:
                     curve = new Lagrange();
                     static_cast<Lagrange*>(curve)->addControlPoint(point);
                     break;
+                    
                 case DrawCircle:
                     curve = new Circle();
                     // default radius of 0.25 for now
@@ -64,9 +66,12 @@ bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
                     
                 default:
                     break;
+                    
             }
             if (curve != nullptr) {
+                curve->setSelected(true);
                 appStateManager->curves.push_back(curve);
+                appStateManager->activeCurve()->setSelected(false);
                 appStateManager->activeCurveIndex = (int)appStateManager->curves.size() - 1;
                 glutPostRedisplay();
                 Window::appStateManager->setEditMode(ModifyMode);
@@ -74,10 +79,24 @@ bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
             }
         }
     }
+    // Select a new curve
+    else if (appEditMode == SelectMode) {
+        for (int i = 0; i < appStateManager->curves.size(); i++) {
+            Curve *c = dynamic_cast<Curve*>(appStateManager->curves.at(i));
+            if (free != nullptr) {
+                float dist = c->distFromCurve(point);
+                if (dist < SELECTION_DIST) {
+                    appStateManager->setToActiveCurve(i);
+                    appStateManager->setEditMode(ModifyMode);
+                    return true;
+                }
+            }
+        }
+    }
     // Modifying existing curves
     else if (appEditMode == ModifyMode) {
         if (state == GLUT_DOWN) {
-            Freeform *free = dynamic_cast<Freeform*>(appStateManager->curves.at(appStateManager->activeCurveIndex));
+            Freeform *free = dynamic_cast<Freeform*>(appStateManager->activeCurve());
             if (free != nullptr) {
                 int existingIndex = free->currentControlPoint(point);
                 if (existingIndex != -1) {
@@ -93,7 +112,6 @@ bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
             appStateManager->isDragging = false;
             appStateManager->activePointIndex = -1;
         }
-
     }
     // Deleting curves and points along them
     else if (appEditMode == DestroyMode) {
@@ -109,7 +127,7 @@ bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
             }
         }
     }
-        return false;
+    return false;
 }
 
 // defaults to not handling the move

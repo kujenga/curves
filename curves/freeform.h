@@ -36,8 +36,8 @@ public:
     // returns hidden index of point, or -1 if not found
     int currentControlPoint(float2 test);
 
-    void moveControlPoint(int i, float2 pos);
-    void drawControlPoints();
+    virtual void moveControlPoint(int i, float2 pos);
+    virtual void drawControlPoints();
     
     // const getter methods for the vector
     const int controlPointVectorSize() { return (int)controlPoints.size(); }

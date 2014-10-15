@@ -70,9 +70,16 @@ bool ToolWindow::respondToKeyboardEvent(unsigned char c)
             Window::appStateManager->setEditMode(DestroyMode);
             return true;
         case 's':
+            Window::appStateManager->setEditMode(SelectMode);
+            return true;
+        case 'S':
             Window::appStateManager->showTrackers = !Window::appStateManager->showTrackers;
             return true;
-            
+        case ' ': {
+            int newIndex = (appStateManager->activeCurveIndex+1) % appStateManager->curves.size();
+            Window::appStateManager->setToActiveCurve(newIndex);
+            return true;
+        }
         
         // set line type
         case 'p':

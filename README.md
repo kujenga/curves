@@ -26,3 +26,17 @@ to draw various line geometries in the 2d plane.
         - is associated with a `ToolType` value and displays its associated text representation
 - Curve
     - pure virtual superclass of all curves, provides basic drawing functionality based on virtual methods
+
+
+## Scoring
+
+### Points
+55 pts for a D,
+65 pts for a C,
+75 pts for a B,
+85 pts for an A.
+
+###
+- When an object is selected, the user may hold down 'A' to add control points to the selected object by clicking. [5 pts]
+- Support Catmull-Clark subdivision curves, created by clicking control points while holding key 'C'. [20 pts]
+- Support dragging control points of the selected curve. [10 pts]

@@ -56,6 +56,7 @@ public:
     
     // variables for manipulating the curve
     Color lineColor = Color(1.0, 0.0, 1.0);
+    Color selectedColor = Color(1.0, 0.0, 0.0);
     float2 translation = float2();
     float rotation = 0.0;
     float2 rotationOrigin = float2();

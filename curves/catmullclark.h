@@ -28,6 +28,8 @@ public:
     
     void addControlPoint(float2 p);
     
+    void moveControlPoint(int i, float2 pos);
+    
     float2 getPoint(float t);
     float2 getDerivative(float t);
 };

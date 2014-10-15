@@ -50,6 +50,12 @@ void CatmullClark::addControlPoint(float2 newPoint)
     }
 }
 
+void CatmullClark::moveControlPoint(int i, float2 pos)
+{
+    Freeform::moveControlPoint(i, pos);
+//    recomputeHolder(MESH_STEPS);
+}
+
 float2 CatmullClark::getPoint(float t)
 {
     if (holder.controlPointVectorSize() == 0) {

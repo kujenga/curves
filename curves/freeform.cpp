@@ -35,7 +35,12 @@ void Freeform::drawControlPoints()
     int siz = (int)controlPoints.size();
     for (int i = 0; i < siz; i++) {
         glBegin(GL_POLYGON);
-        glColor3d(0.0, 1.0, 0.0);
+        // inverse of line colors for markers
+        if (selected) {
+            glColor3d(1.0-selectedColor.r, 1.0-selectedColor.g, 1.0-selectedColor.b);
+        } else {
+            glColor3d(1.0-lineColor.r, 1.0-lineColor.g, 1.0-lineColor.b);
+        }
         float2 cur = controlPoints.at(i);
         glVertex2d(cur.x - TRACKER_SIZE, cur.y);
         glVertex2d(cur.x, cur.y + TRACKER_SIZE);

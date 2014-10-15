@@ -14,6 +14,7 @@
 
 #include "Window.h"
 
+#define SELECTION_DIST 0.1
 
 class DrawWindow : public Window {
     

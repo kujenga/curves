@@ -45,7 +45,7 @@ void Curve::draw()
     performTransformations();
     glBegin(GL_LINE_STRIP);
     if (selected) {
-        glColor3d(1.0, 1.0, 0.0);
+        glColor3d(selectedColor.r, selectedColor.g, selectedColor.b);
     } else {
         glColor3d(lineColor.r, lineColor.g, lineColor.b);
     }
@@ -61,7 +61,12 @@ void Curve::drawTracker(float t)
 {
     performTransformations();
     glBegin(GL_POLYGON);
-    glColor3d(1.0, 0.0, 0.0);
+    // inverse of line colors for markers
+    if (selected) {
+        glColor3d(1.0-selectedColor.r, 1.0-selectedColor.g, 1.0-selectedColor.b);
+    } else {
+        glColor3d(1.0-lineColor.r, 1.0-lineColor.g, 1.0-lineColor.b);
+    }
     float2 cur = getPoint(t);
     glVertex2d(cur.x - TRACKER_SIZE, cur.y);
     glVertex2d(cur.x, cur.y + TRACKER_SIZE);
@@ -75,7 +80,12 @@ void Curve::drawTangent(float t)
 {
     performTransformations();
     glBegin(GL_LINES);
-    glColor3d(1.0, 0.0, 0.0);
+    // inverse of line colors for markers
+    if (selected) {
+        glColor3d(1.0-selectedColor.r, 1.0-selectedColor.g, 1.0-selectedColor.b);
+    } else {
+        glColor3d(1.0-lineColor.r, 1.0-lineColor.g, 1.0-lineColor.b);
+    }
     float2 curP = getPoint(t);
     float2 start = curP - getDerivative(t);
     float2 end = curP + getDerivative(t);
