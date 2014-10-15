@@ -7,3 +7,18 @@
 //
 
 #include "catmullclark.h"
+
+void CatmullClark::addControlPoint(float2 newPoint)
+{
+    
+}
+
+float2 CatmullClark::getPoint(float t)
+{
+    return float2();
+}
+
+float2 CatmullClark::getDerivative(float t)
+{
+    return float2();
+}

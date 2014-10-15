@@ -19,7 +19,7 @@ protected:
 public:
     // calls superclass constructor
     CatmullClark(void) : Freeform() {}
-    CatmullClark(const Freeform& previous);
+    CatmullClark(const Freeform& previous) : Freeform(previous) {}
     
     void addControlPoint(float2 p);
     

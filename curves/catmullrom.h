@@ -19,7 +19,7 @@ protected:
 public:
     // calls superclass constructor
     CatmullRom(void) : Freeform() {}
-    CatmullRom(const Freeform& previous);
+    CatmullRom(const Freeform& previous) : Freeform(previous) {}
     
     void addControlPoint(float2 p);
     

@@ -20,6 +20,9 @@ typedef enum {
     DrawLagrange,
     DrawCircle,
     DrawPolyline,
+    DrawCatmullClark,
+    DrawCatmullRom,
+    DrawHermiteInterp
 } ToolType;
 
 typedef enum{
@@ -30,7 +33,7 @@ typedef enum{
 } EditMode;
 
 class StateManager {
-    ToolType applicationToolType = DrawBezier;
+    ToolType applicationToolType = DrawCatmullClark;
     EditMode applicationEditMode = CreateMode;
     
 public:

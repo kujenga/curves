@@ -13,13 +13,13 @@
 
 #include "freeform.h"
 
-class CubicHermiteInterp : public Freeform {
+class HermiteInterp : public Freeform {
 protected:
     
 public:
     // calls superclass constructor
-    CubicHermiteInterp(void) : Freeform() {}
-    CubicHermiteInterp(const Freeform& previous);
+    HermiteInterp(void) : Freeform() {}
+    HermiteInterp(const Freeform& previous) : Freeform(previous) {}
     
     void addControlPoint(float2 p);
     

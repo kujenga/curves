@@ -7,3 +7,18 @@
 //
 
 #include "hermiteinterp.h"
+
+void HermiteInterp::addControlPoint(float2 newPoint)
+{
+    
+}
+
+float2 HermiteInterp::getPoint(float t)
+{
+    return float2();
+}
+
+float2 HermiteInterp::getDerivative(float t)
+{
+    return float2();
+}

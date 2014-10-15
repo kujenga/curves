@@ -46,6 +46,21 @@ bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
                     curve = new Polyline;
                     static_cast<Polyline*>(curve)->addControlPoint(point);
                     break;
+                
+                case DrawCatmullClark:
+                    curve = new CatmullClark;
+                    static_cast<CatmullClark*>(curve)->addControlPoint(point);
+                    break;
+                
+                case DrawCatmullRom:
+                    curve = new CatmullRom;
+                    static_cast<CatmullRom*>(curve)->addControlPoint(point);
+                    break;
+                    
+                case DrawHermiteInterp:
+                    curve = new HermiteInterp;
+                    static_cast<HermiteInterp*>(curve)->addControlPoint(point);
+                    break;
                     
                 default:
                     break;
