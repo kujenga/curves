@@ -110,6 +110,12 @@ bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
             }
         } else if (state == GLUT_UP) {
             appStateManager->isDragging = false;
+            // catmull clark needs to be recomputed, but it is too expensive to do it on every move of the point
+            CatmullClark *cc = dynamic_cast<CatmullClark*>(appStateManager->activeCurve());
+            if (cc != nullptr) {
+                cc->recomputeHolder(4);
+                glutPostRedisplay();
+            }
             appStateManager->activePointIndex = -1;
         }
     }

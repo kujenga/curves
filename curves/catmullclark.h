@@ -19,9 +19,10 @@
 class CatmullClark : public Freeform {
 protected:
     // holds the subdivided mesh points and handles all value calculation based on those
-    Polyline holder = Polyline();
-    void recomputeHolder(int depth);
+    Polyline *holder = new Polyline();
 public:
+    void recomputeHolder(int depth);
+    
     // calls superclass constructor
     CatmullClark(void) : Freeform() {}
     CatmullClark(const Freeform& previous) : Freeform(previous) {}

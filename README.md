@@ -38,5 +38,8 @@ to draw various line geometries in the 2d plane.
 
 ###
 - When an object is selected, the user may hold down 'A' to add control points to the selected object by clicking. [5 pts]
+- When no keys are pressed and the user presses the mouse button, the object at the mouse cursor (if there is any) becomes selected. [15 pts if this works approximately, (*) 25 pts if this works exactly]
+    - implement line clipping, and clip objects to a small window around the cursor (knowledge-hungry student's way)
+    - use OpenGL selection mode (OpenGL expert way)
 - Support Catmull-Clark subdivision curves, created by clicking control points while holding key 'C'. [20 pts]
 - Support dragging control points of the selected curve. [10 pts]
