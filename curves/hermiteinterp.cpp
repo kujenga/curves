@@ -96,29 +96,29 @@ void HermiteInterp::moveControlPoint(int i, float2 pos)
 float2 cubicHermiteSplineFunc(float t, float2 p0, float2 m0, float2 p1, float2 m1)
 {
     float h00 =  2.0*t*t*t - 3.0*t*t + 1.0;
-    float h10 =      t*t*t - 2.0*t*t - t;
+    float h10 =      t*t*t - 2.0*t*t + t;
     float h01 = -2.0*t*t*t + 3.0*t*t;
     float h11 =      t*t*t -     t*t;
-
-    //    printf("numPoints: %f, curPoint: %i, t: %f, ts: %f\n",numPoints, curPoint, t, ts);
-    return p0*h00 + (m0)*h10 + p1*h01 + (m1)*h11;
+    
+    return p0*h00 + (m0)*h10*5 + p1*h01 + (m1)*h11*5;
 }
 
 float2 HermiteInterp::getPoint(float t)
 {
-    float numPoints = (float)controlPointVectorSize();
     if (controlPointVectorSize() < 4) {
         return controlPoints.at(0);
     }
-    int curPoint = (int)floorf(t * (numPoints/2-1));
+    float numPoints = (float)controlPointVectorSize();
+    float numEdges = numPoints/2-1;
+    int curPoint = 2*(int)floorf(t * numEdges);
     float2 p0 = controlPointVectorElement(curPoint);
     float2 m0 = controlPointVectorElement(curPoint+1);
     float2 p1 = controlPointVectorElement(curPoint+2);
     float2 m1 = controlPointVectorElement(curPoint+3);
     
-    numPoints /= 2;
+
     // scale t to the current subdivision
-    float ts = (t - (curPoint/numPoints)) * numPoints * 0.5;
+    float ts = t*numEdges-(float)curPoint/2;
     
     return cubicHermiteSplineFunc(ts, p0, m0, p1, m1);
 }

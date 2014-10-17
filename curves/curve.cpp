@@ -42,7 +42,6 @@ float Curve::distFromCurve(float2 point)
 
 void Curve::draw()
 {
-//    printf("\nDRAWING\n\n");
     performTransformations();
     glBegin(GL_LINE_STRIP);
     if (selected) {
