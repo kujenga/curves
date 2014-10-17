@@ -33,7 +33,7 @@ typedef enum{
 } EditMode;
 
 class StateManager {
-    ToolType applicationToolType = DrawHermiteInterp;
+    ToolType applicationToolType = DrawCatmullRom;
     EditMode applicationEditMode = CreateMode;
     
 public:

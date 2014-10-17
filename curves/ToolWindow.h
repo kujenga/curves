@@ -31,6 +31,13 @@ public:
         lView->scale = float2(0.20, 0.8) * scale;
         lView->setToolType(DrawLagrange);
         toolViews.push_back(lView);
+        
+        ToolView *pView = new ToolView();
+        pView->origin = transformedFloat2(0.0, 0.0);
+        pView->scale = float2(0.20, 0.8) * scale;
+        pView->setToolType(DrawPolyline);
+        toolViews.push_back(pView);
+
     }
     
     // draws the contents of the window

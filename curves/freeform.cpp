@@ -28,25 +28,30 @@ Freeform::Freeform(const Freeform& previous)
 // DRAWING
 ///////////////////////////////////////////////////
 
+void Freeform::drawSingleControlPoint(int index)
+{
+    glBegin(GL_POLYGON);
+    // inverse of line colors for markers
+    if (selected) {
+        glColor3d(1.0-selectedColor.r, 1.0-selectedColor.g, 1.0-selectedColor.b);
+    } else {
+        glColor3d(1.0-lineColor.r, 1.0-lineColor.g, 1.0-lineColor.b);
+    }
+    float2 cur = controlPoints.at(index);
+    glVertex2d(cur.x - TRACKER_SIZE, cur.y);
+    glVertex2d(cur.x, cur.y + TRACKER_SIZE);
+    glVertex2d(cur.x + TRACKER_SIZE, cur.y);
+    glVertex2d(cur.x, cur.y - TRACKER_SIZE);
+    glEnd();
+}
+
 void Freeform::drawControlPoints()
 {
     performTransformations();
     // draw points at control points
     int siz = (int)controlPoints.size();
     for (int i = 0; i < siz; i++) {
-        glBegin(GL_POLYGON);
-        // inverse of line colors for markers
-        if (selected) {
-            glColor3d(1.0-selectedColor.r, 1.0-selectedColor.g, 1.0-selectedColor.b);
-        } else {
-            glColor3d(1.0-lineColor.r, 1.0-lineColor.g, 1.0-lineColor.b);
-        }
-        float2 cur = controlPoints.at(i);
-        glVertex2d(cur.x - TRACKER_SIZE, cur.y);
-        glVertex2d(cur.x, cur.y + TRACKER_SIZE);
-        glVertex2d(cur.x + TRACKER_SIZE, cur.y);
-        glVertex2d(cur.x, cur.y - TRACKER_SIZE);
-        glEnd();
+        drawSingleControlPoint(i);
     }
     inverseTransformations();
 }

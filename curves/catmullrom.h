@@ -11,20 +11,17 @@
 
 #include <stdio.h>
 
-#include "freeform.h"
+#include "hermiteinterp.h"
 
-class CatmullRom : public Freeform {
+class CatmullRom : public HermiteInterp {
 protected:
-    
-public:
-    // calls superclass constructor
-    CatmullRom(void) : Freeform() {}
-    CatmullRom(const Freeform& previous) : Freeform(previous) {}
-    
+    void recalculateTangents();
+public:    
     void addControlPoint(float2 p);
+    void moveControlPoint(int i, float2 pos);
     
-    float2 getPoint(float t);
-    float2 getDerivative(float t);
+    void drawControlPoints();
+    int currentControlPoint(float2 test);
 };
 
 #endif /* defined(__curves__catmullrom__) */

@@ -138,10 +138,10 @@
 				860955F719DCAEC400ECF43C /* lagrange.cpp */,
 				86F890E519EAF8BE00D1E5D0 /* catmullclark.h */,
 				86F890E419EAF8BE00D1E5D0 /* catmullclark.cpp */,
-				86F890E819EAF8C700D1E5D0 /* catmullrom.h */,
-				86F890E719EAF8C700D1E5D0 /* catmullrom.cpp */,
 				86F890EB19EAF8E600D1E5D0 /* hermiteinterp.h */,
 				86F890EA19EAF8E600D1E5D0 /* hermiteinterp.cpp */,
+				86F890E819EAF8C700D1E5D0 /* catmullrom.h */,
+				86F890E719EAF8C700D1E5D0 /* catmullrom.cpp */,
 			);
 			path = curves;
 			sourceTree = "<group>";

@@ -28,6 +28,15 @@ void ToolView::draw()
         case DrawPolyline:
             snprintf(buf, sizeof(buf), "Polyline");
             break;
+        case DrawCatmullClark:
+            snprintf(buf, sizeof(buf), "Cm-Clark");
+            break;
+        case DrawHermiteInterp:
+            snprintf(buf, sizeof(buf), "Hermite");
+            break;
+        case DrawCatmullRom:
+            snprintf(buf, sizeof(buf), "Cm-Rom");
+            break;
             
         default:
             break;

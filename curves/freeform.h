@@ -17,6 +17,8 @@
 class Freeform : public Curve {
 protected:
     std::vector<float2> controlPoints;
+    
+    void drawSingleControlPoint(int index);
 public:
     // constructors
     Freeform(void);

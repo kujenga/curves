@@ -21,14 +21,14 @@ public:
     HermiteInterp(void) : Freeform() {}
     HermiteInterp(const Freeform& previous) : Freeform(previous) {}
     
-    void addControlPoint(float2 p);
-    void drawControlPoints();
+    virtual void addControlPoint(float2 p);
+    virtual void drawControlPoints();
     
-    int currentControlPoint(float2 test);
-    void moveControlPoint(int i, float2 pos);
+    virtual int currentControlPoint(float2 test);
+    virtual void moveControlPoint(int i, float2 pos);
     
-    float2 getPoint(float t);
-    float2 getDerivative(float t);
+    virtual float2 getPoint(float t);
+    virtual float2 getDerivative(float t);
 };
 
 #endif /* defined(__curves__hermiteinterp__) */
