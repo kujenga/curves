@@ -14,15 +14,15 @@ void CatmullRom::recalculateTangents()
         return;
     }
     // iterate over intermediate points and recompute them
-    for (int k = 3; k < controlPointVectorSize()-2; k += 2) {
+    for (int k = 2; k < controlPointVectorSize()-2; k += 2) {
         
-        float2 pkminus = controlPointVectorElement(k - 3);
+        float2 pkminus = controlPointVectorElement(k - 2);
         float2 pkplus = controlPointVectorElement(k + 2);
         
-        float tkplus = (float)(k+2);
-        float tkminus = (float)(k-3);
+        float tkplus = (float)(k/2+2);
+        float tkminus = (float)(k/2-3);
         
-        controlPoints.at(k) = (pkplus - pkminus) * (1/(tkplus - tkminus));
+        controlPoints.at(k+1) = (pkplus - pkminus) * (1/(tkplus - tkminus));
     }
 }
 
@@ -41,12 +41,10 @@ void CatmullRom::moveControlPoint(int i, float2 pos)
 
 void CatmullRom::drawControlPoints()
 {
-    HermiteInterp::drawControlPoints();
-    
     // skip the hermite's drawing of control points
-//    for (int i = 0; i < controlPointVectorSize(); i += 2) {
-//        Freeform::drawSingleControlPoint(i);
-//    }
+    for (int i = 0; i < controlPointVectorSize(); i += 2) {
+        Freeform::drawSingleControlPoint(i);
+    }
 }
 
 int CatmullRom::currentControlPoint(float2 test)
