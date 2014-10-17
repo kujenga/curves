@@ -46,6 +46,8 @@ public:
     int activePointIndex;
     // whether or not a point along the active curve is currently being dragged
     bool isDragging;
+    // whether or not the curves should be filled
+    bool shouldFill;
     
     // whether or not trackers should be displayed
     bool showTrackers;

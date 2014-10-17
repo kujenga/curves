@@ -8,6 +8,17 @@
 
 #include "ToolWindow.h"
 
+void ToolWindow::setupViews()
+{
+    ToolType types[] = {DrawBezier, DrawLagrange, DrawPolyline, DrawCatmullClark, DrawHermiteInterp, DrawCatmullRom};
+    for (int i = 0; i < 6; i++) {
+        ToolView *tv = new ToolView();
+        tv->origin = transformedFloat2(-0.85 + 0.25 * (float)i, 0.0);
+        tv->scale = float2(0.1, 0.8) * scale;
+        tv->setToolType(types[i]);
+        toolViews.push_back(tv);
+    }
+}
 
 bool ToolWindow::draw()
 {
@@ -26,7 +37,11 @@ bool ToolWindow::draw()
     glEnd();
     
     for (int i = 0; i < toolViews.size(); i++) {
-        toolViews.at(i)->draw();
+        ToolView *tv = toolViews.at(i);
+        if (appStateManager->getToolType() == tv->getToolType()) {
+            tv->setSelected(true);
+        }
+        tv->draw();
     }
     return false;
 }

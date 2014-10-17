@@ -42,4 +42,7 @@ to draw various line geometries in the 2d plane.
     - implement line clipping, and clip objects to a small window around the cursor (knowledge-hungry student's way)
     - use OpenGL selection mode (OpenGL expert way)
 - Support Catmull-Clark subdivision curves, created by clicking control points while holding key 'C'. [20 pts]
+- Support Catmull-Rom splines, created by clicking control points while holding key 'R'. [25 pts]
+- Support cubic Hermite interpolation splines, created by clicking control points while holding key 'U'. Derivatives at control points should be manually editable. Extra controls should be displayed to allow the user to adjust derivatives. [(*) 35 pts]
 - Support dragging control points of the selected curve. [10 pts]
+

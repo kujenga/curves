@@ -127,3 +127,4 @@ float2 HermiteInterp::getDerivative(float t)
 {
     return float2();
 }
+
