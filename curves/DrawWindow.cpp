@@ -98,11 +98,13 @@ bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
         if (state == GLUT_DOWN) {
             Freeform *free = dynamic_cast<Freeform*>(appStateManager->activeCurve());
             if (free != nullptr) {
+                
                 int existingIndex = free->currentControlPoint(point);
                 if (existingIndex != -1) {
                     appStateManager->isDragging = true;
                     appStateManager->activePointIndex = existingIndex;
-                } else {//if (button == GLUT_RIGHT_BUTTON) {
+                }
+                else {//if (button == GLUT_RIGHT_BUTTON) {
                     free->addControlPoint(point);
                 }
                 glutPostRedisplay();
@@ -141,7 +143,7 @@ bool DrawWindow::respondToMoveEvent(float2 point)
 {
     if (appStateManager->isDragging && appStateManager->activePointIndex >= -1) {
         // dynamic cast to freeform curve which has movable points
-        Freeform *free = dynamic_cast<Freeform*>(appStateManager->curves.at(appStateManager->activeCurveIndex));
+        Freeform *free = dynamic_cast<Freeform*>(appStateManager->activeCurve());
         if (free != nullptr) {
             free->moveControlPoint(appStateManager->activePointIndex, point);
             glutPostRedisplay();

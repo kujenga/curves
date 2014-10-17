@@ -34,10 +34,10 @@ public:
         printf("%lu\n",controlPoints.size());
     }
     // returns hidden index of point, or -1 if not found
-    int currentControlPoint(float2 test);
-
+    virtual int currentControlPoint(float2 test);
     virtual void moveControlPoint(int i, float2 pos);
     virtual void drawControlPoints();
+    bool pointMatch(float2 p1, float2 p2);
     
     // const getter methods for the vector
     const int controlPointVectorSize() { return (int)controlPoints.size(); }

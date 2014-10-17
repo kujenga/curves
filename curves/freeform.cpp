@@ -55,7 +55,7 @@ void Freeform::drawControlPoints()
 // POINT MODIFICATION
 ///////////////////////////////////////////////////
 
-bool pointMatch(float2 f1, float2 f2)
+bool Freeform::pointMatch(float2 f1, float2 f2)
 {
     float dist = sqrtf(powf(f1.x - f2.x, 2.0) + powf(f1.y - f2.y, 2.0));
     if (dist < POINT_BUFFER) return true;

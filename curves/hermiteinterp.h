@@ -15,13 +15,17 @@
 
 class HermiteInterp : public Freeform {
 protected:
-    
+    void drawControlPointTangents();
 public:
     // calls superclass constructor
     HermiteInterp(void) : Freeform() {}
     HermiteInterp(const Freeform& previous) : Freeform(previous) {}
     
     void addControlPoint(float2 p);
+    void drawControlPoints();
+    
+    int currentControlPoint(float2 test);
+    void moveControlPoint(int i, float2 pos);
     
     float2 getPoint(float t);
     float2 getDerivative(float t);
