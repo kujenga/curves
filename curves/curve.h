@@ -17,6 +17,8 @@
 // http://www.opengl.org/resources/libraries/glut/
 #include <GLUT/glut.h>
 
+#include <list>
+
 #include "float2.h"
 
 // resolution of the drawing
@@ -42,7 +44,7 @@ protected:
     void performTransformations();
     
     void drawOutline();
-    void drawFilled();
+    void drawFilled(std::list<float2> pts, std::list<float2> cur);
 public:
     void setSelected(bool select) { selected = select; }
     // instantiated by subclasses to define curve

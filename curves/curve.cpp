@@ -16,12 +16,6 @@ void Curve::performTransformations()
     glRotatef(360.0*rotation/M_PI, rotationOrigin.x, rotationOrigin.y, 1.0);
 }
 
-//void Curve::inverseTransformations()
-//{
-//    glTranslatef(-translation.x, -translation.y, 0.0);
-//    glRotatef(-360.0*rotation/M_PI, -rotationOrigin.x, -rotationOrigin.y, 1.0);
-//}
-
 // non-optimized, maybe possible to use the tangent function to find normal intersection in O(1) time rather than O(n) for n points along the curve
 float Curve::distFromCurve(float2 point)
 {
@@ -44,9 +38,99 @@ float Curve::distFromCurve(float2 point)
 // Drawing functions
 ///////////////////////////////////
 
-void Curve::drawFilled()
-{
+// implementation based on: http://www.blackpawn.com/texts/pointinpoly/ (barycentric technique)
 
+float dotProd(float2 a, float2 b)
+{
+    return a.x * b.x + a.y * b.y;
+}
+
+// questionable...
+float2 crossProd(float2 a, float2 b)
+{
+    return float2(a.x * b.y, a.y * b.x);
+}
+
+// unused, cross products don't seem to make much sense for 2D vectors...
+bool sameSide(float2 p1, float2 p2, float2 a, float2 b)
+{
+    float2 cp1 = crossProd((b-a), (p1-a));
+    float2 cp2 = crossProd((b-a), (p2-a));
+    float dp = dotProd(cp1, cp2);
+    if (dp >= 0) {
+        return true;
+    }
+    return false;
+}
+
+bool containsPoint(float2 a, float2 b, float2 c, float2 p)
+{
+    // Compute vectors
+    float2 v0 = c - a;
+    float2 v1 = b - a;
+    float2 v2 = p - a;
+    
+    // Compute dot products
+    float dot00 = dotProd(v0, v0);
+    float dot01 = dotProd(v0, v1);
+    float dot02 = dotProd(v0, v2);
+    float dot11 = dotProd(v1, v1);
+    float dot12 = dotProd(v1, v2);
+    
+    // Compute barycentric coordinates
+    float invDenom = 1 / (dot00 * dot11 - dot01 * dot01);
+    float u = (dot11 * dot02 - dot01 * dot12) * invDenom;
+    float v = (dot00 * dot12 - dot01 * dot02) * invDenom;
+    
+    // Check if point is in triangle
+    return (u >= 0) && (v >= 0) && (u + v < 1);
+}
+
+
+void Curve::drawFilled(std::list<float2> pts, std::list<float2> cur)
+{
+    bool validEar = true;
+    std::list<float2>::const_iterator itr = pts.begin(), end = pts.end();
+    std::list<float2>::const_iterator curItr = cur.begin();
+    float2 fst = *(curItr++);
+    float2 snd = *(curItr++);
+    float2 trd = *(curItr++);
+    
+    for ( ; itr != end; ++itr) {
+        float2 p = *itr;
+        if (p == fst || p == snd || p == trd) {
+            continue;
+        }
+        if (containsPoint(fst, snd, trd, p)) {
+            validEar = false;
+        }
+    }
+    if (validEar) {
+        glPushMatrix();
+        performTransformations();
+        glBegin(GL_TRIANGLE_FAN);
+        if (selected) {
+            glColor3d(selectedColor.r, selectedColor.g, selectedColor.b);
+        } else {
+            glColor3d(lineColor.r, lineColor.g, lineColor.b);
+        }
+        glVertex2d(fst.x, fst.y);
+        glVertex2d(snd.x, snd.y);
+        glVertex2d(trd.x, trd.y);
+        glEnd();
+        glPopMatrix();
+        
+        cur.pop_front();
+        cur.pop_front();
+        cur.push_front(fst);
+    } else {
+        cur.pop_front();
+    }
+    if (cur.size() >= 3) {
+        drawFilled(pts, cur);
+    } else {
+        return;
+    }
 }
 
 void Curve::drawOutline()
@@ -69,11 +153,34 @@ void Curve::drawOutline()
 
 void Curve::draw()
 {
-    if (filled) {
-        drawFilled();
-    } else {
-        drawOutline();
+    // test code for containsPoint function
+    static bool tested = false;
+    if (!tested) {
+        if (!containsPoint(float2(0, 0), float2(2,0), float2(1, 2), float2(1,1))) {
+            puts("bad inside");
+        }
+        if (containsPoint(float2(0, 0), float2(2,0), float2(1, 2), float2(0,1))) {
+            puts("bad outside left");
+        }
+        if (containsPoint(float2(0, 0), float2(2,0), float2(1, 2), float2(2,1))) {
+            puts("bad outside right");
+        }
+        if (containsPoint(float2(0, 0), float2(2,0), float2(1, 2), float2(1,-1))) {
+            puts("bad outside below");
+        }
+        tested = true;
     }
+    
+    if (filled) {
+        std::list<float2> pts;
+        //create DLL of all the points in the shape
+        for (float t = 0; t < 1.0; t += STEP) {
+            pts.push_back(getPoint(t));
+        }
+        drawFilled(pts, pts);
+    }
+    drawOutline();
+
 }
 
 void Curve::drawTracker(float t)

@@ -79,6 +79,12 @@ public:
         y *= a;
     }
     
+    // questionable accuracy for anything except the same actual float2 object
+    bool operator==(float2 a)
+    {
+        return x == a.x && y == a.y;
+    }
+    
     float norm()
     {
         return sqrtf(x*x+y*y);
