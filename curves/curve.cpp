@@ -16,11 +16,11 @@ void Curve::performTransformations()
     glRotatef(360.0*rotation/M_PI, rotationOrigin.x, rotationOrigin.y, 1.0);
 }
 
-void Curve::inverseTransformations()
-{
-    glTranslatef(-translation.x, -translation.y, 0.0);
-    glRotatef(-360.0*rotation/M_PI, -rotationOrigin.x, -rotationOrigin.y, 1.0);
-}
+//void Curve::inverseTransformations()
+//{
+//    glTranslatef(-translation.x, -translation.y, 0.0);
+//    glRotatef(-360.0*rotation/M_PI, -rotationOrigin.x, -rotationOrigin.y, 1.0);
+//}
 
 // non-optimized, maybe possible to use the tangent function to find normal intersection in O(1) time rather than O(n) for n points along the curve
 float Curve::distFromCurve(float2 point)
@@ -40,14 +40,20 @@ float Curve::distFromCurve(float2 point)
     return minDist;
 }
 
-void Curve::draw()
+///////////////////////////////////
+// Drawing functions
+///////////////////////////////////
+
+void Curve::drawFilled()
 {
+
+}
+
+void Curve::drawOutline()
+{
+    glPushMatrix();
     performTransformations();
-    if (filled) {
-        glBegin(GL_TRIANGLE_FAN);
-    } else {
-        glBegin(GL_LINE_STRIP);
-    }
+    glBegin(GL_LINE_STRIP);
     if (selected) {
         glColor3d(selectedColor.r, selectedColor.g, selectedColor.b);
     } else {
@@ -58,11 +64,21 @@ void Curve::draw()
         glVertex2d(cur.x, cur.y);
     }
     glEnd();
-    inverseTransformations();
+    glPopMatrix();
+}
+
+void Curve::draw()
+{
+    if (filled) {
+        drawFilled();
+    } else {
+        drawOutline();
+    }
 }
 
 void Curve::drawTracker(float t)
 {
+    glPushMatrix();
     performTransformations();
     glBegin(GL_POLYGON);
     // inverse of line colors for markers
@@ -77,11 +93,12 @@ void Curve::drawTracker(float t)
     glVertex2d(cur.x + TRACKER_SIZE, cur.y);
     glVertex2d(cur.x, cur.y - TRACKER_SIZE);
     glEnd();
-    inverseTransformations();
+    glPopMatrix();
 }
 
 void Curve::drawTangent(float t)
 {
+    glPushMatrix();
     performTransformations();
     glBegin(GL_LINES);
     // inverse of line colors for markers
@@ -96,5 +113,5 @@ void Curve::drawTangent(float t)
     glVertex2d(start.x, start.y);
     glVertex2d(end.x, end.y);
     glEnd();
-    inverseTransformations();
+    glPopMatrix();
 }

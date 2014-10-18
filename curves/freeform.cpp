@@ -47,13 +47,14 @@ void Freeform::drawSingleControlPoint(int index)
 
 void Freeform::drawControlPoints()
 {
+    glPushMatrix();
     performTransformations();
     // draw points at control points
     int siz = (int)controlPoints.size();
     for (int i = 0; i < siz; i++) {
         drawSingleControlPoint(i);
     }
-    inverseTransformations();
+    glPopMatrix();
 }
 
 ///////////////////////////////////////////////////

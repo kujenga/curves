@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		860955F619DCA45E00ECF43C /* freeform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 860955F419DCA45E00ECF43C /* freeform.cpp */; };
 		860955F919DCAEC400ECF43C /* lagrange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 860955F719DCAEC400ECF43C /* lagrange.cpp */; };
+		860DD03319F2BA330072F57A /* NumberView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 860DD03119F2BA330072F57A /* NumberView.cpp */; };
 		861A88F219CADE4D00E50E6C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 861A88F119CADE4D00E50E6C /* main.cpp */; };
 		861A890119CAE5D300E50E6C /* curve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 861A88FF19CAE5D300E50E6C /* curve.cpp */; };
 		861A890419CAE5E600E50E6C /* circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 861A890219CAE5E600E50E6C /* circle.cpp */; };
@@ -47,6 +48,8 @@
 		860955F519DCA45E00ECF43C /* freeform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = freeform.h; sourceTree = "<group>"; };
 		860955F719DCAEC400ECF43C /* lagrange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lagrange.cpp; sourceTree = "<group>"; };
 		860955F819DCAEC400ECF43C /* lagrange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lagrange.h; sourceTree = "<group>"; };
+		860DD03119F2BA330072F57A /* NumberView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NumberView.cpp; path = curves/NumberView.cpp; sourceTree = "<group>"; };
+		860DD03219F2BA330072F57A /* NumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumberView.h; path = curves/NumberView.h; sourceTree = "<group>"; };
 		861A88EE19CADE4D00E50E6C /* curves */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = curves; sourceTree = BUILT_PRODUCTS_DIR; };
 		861A88F119CADE4D00E50E6C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = curves/main.cpp; sourceTree = "<group>"; };
 		861A88F819CADE8400E50E6C /* float2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = float2.h; path = curves/float2.h; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				8678CEA319E60BB300F7E5B8 /* ToolView.cpp */,
 				8678CEA919E69EAE00F7E5B8 /* ModeView.h */,
 				8678CEA819E69EAE00F7E5B8 /* ModeView.cpp */,
+				860DD03219F2BA330072F57A /* NumberView.h */,
+				860DD03119F2BA330072F57A /* NumberView.cpp */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 				8678CEA119E5FE9700F7E5B8 /* View.cpp in Sources */,
 				861A890119CAE5D300E50E6C /* curve.cpp in Sources */,
 				8678CE9E19E5F5FB00F7E5B8 /* StateManager.cpp in Sources */,
+				860DD03319F2BA330072F57A /* NumberView.cpp in Sources */,
 				86F890EC19EAF8E600D1E5D0 /* hermiteinterp.cpp in Sources */,
 				86F890E919EAF8C700D1E5D0 /* catmullrom.cpp in Sources */,
 				860955F919DCAEC400ECF43C /* lagrange.cpp in Sources */,

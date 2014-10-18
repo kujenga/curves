@@ -40,7 +40,9 @@ protected:
     bool selected = false;
     
     void performTransformations();
-    void inverseTransformations();
+    
+    void drawOutline();
+    void drawFilled();
 public:
     void setSelected(bool select) { selected = select; }
     // instantiated by subclasses to define curve
