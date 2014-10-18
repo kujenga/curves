@@ -50,12 +50,16 @@ public:
     // methods for selection of the line
     float distFromCurve(float2 point);
     
-    // curve functions that utilize virtual functions to draw the defined curve
+    // curve functions utilizing virtual functions to draw the defined curve
     void draw();
     void drawTracker(float t);
     void drawTangent(float t);
     
-    // variables for manipulating the curve
+    ////////////////////////////////////////////
+    // Transformation and drawing modification variables
+    ////////////////////////////////////////////
+
+    bool filled = false;
     Color lineColor = Color(1.0, 0.0, 1.0);
     Color selectedColor = Color(1.0, 0.0, 0.0);
     float2 translation = float2();

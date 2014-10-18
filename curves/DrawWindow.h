@@ -5,6 +5,7 @@
 //  Created by Aaron Taylor on 10/6/14.
 //  Copyright (c) 2014 Aaron Taylor. All rights reserved.
 //
+// Handles the majority of the drawing operations while interfacing with the StateManager
 
 #ifndef __curves__DrawWindow__
 #define __curves__DrawWindow__

@@ -23,117 +23,138 @@ bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
 {
     EditMode appEditMode = Window::appStateManager->getEditMode();
     
+    /////////////////////////////
     // Creating new curves
-    if (appEditMode == CreateMode) {
-        if (state == GLUT_UP) {
-            Curve *curve;
-            switch (Window::appStateManager->getToolType()) {
-                case DrawBezier:
-                    curve = new Bezier();
-                    static_cast<Bezier*>(curve)->addControlPoint(point);
-                    break;
-                    
-                case DrawLagrange:
-                    curve = new Lagrange();
-                    static_cast<Lagrange*>(curve)->addControlPoint(point);
-                    break;
-                    
-                case DrawCircle:
-                    curve = new Circle();
-                    // default radius of 0.25 for now
-                    static_cast<Circle*>(curve)->setValues(point, 0.25);
-                    break;
-                    
-                case DrawPolyline:
-                    curve = new Polyline;
-                    static_cast<Polyline*>(curve)->addControlPoint(point);
-                    break;
-                
-                case DrawCatmullClark:
-                    curve = new CatmullClark;
-                    static_cast<CatmullClark*>(curve)->addControlPoint(point);
-                    break;
-                
-                case DrawCatmullRom:
-                    curve = new CatmullRom;
-                    static_cast<CatmullRom*>(curve)->addControlPoint(point);
-                    break;
-                    
-                case DrawHermiteInterp:
-                    curve = new HermiteInterp;
-                    static_cast<HermiteInterp*>(curve)->addControlPoint(point);
-                    break;
-                    
-                default:
-                    break;
-                    
-            }
-            if (curve != nullptr) {
-                curve->setSelected(true);
-                appStateManager->curves.push_back(curve);
-                appStateManager->activeCurve()->setSelected(false);
-                appStateManager->activeCurveIndex = (int)appStateManager->curves.size() - 1;
-                glutPostRedisplay();
-                Window::appStateManager->setEditMode(ModifyMode);
-                return true;
-            }
-        }
-    }
-    // Select a new curve
-    else if (appEditMode == SelectMode) {
-        for (int i = 0; i < appStateManager->curves.size(); i++) {
-            Curve *c = dynamic_cast<Curve*>(appStateManager->curves.at(i));
-            if (free != nullptr) {
-                float dist = c->distFromCurve(point);
-                if (dist < SELECTION_DIST) {
-                    appStateManager->setToActiveCurve(i);
-                    appStateManager->setEditMode(ModifyMode);
+    /////////////////////////////
+    switch (appEditMode) {
+        case CreateMode: {
+            if (state == GLUT_UP) {
+                Curve *curve;
+                switch (Window::appStateManager->getToolType()) {
+                    case DrawBezier:
+                        curve = new Bezier();
+                        static_cast<Bezier*>(curve)->addControlPoint(point);
+                        break;
+                        
+                    case DrawLagrange:
+                        curve = new Lagrange();
+                        static_cast<Lagrange*>(curve)->addControlPoint(point);
+                        break;
+                        
+                    case DrawCircle:
+                        curve = new Circle();
+                        // default radius of 0.25 for now
+                        static_cast<Circle*>(curve)->setValues(point, 0.25);
+                        break;
+                        
+                    case DrawPolyline:
+                        curve = new Polyline;
+                        static_cast<Polyline*>(curve)->addControlPoint(point);
+                        break;
+                        
+                    case DrawCatmullClark:
+                        curve = new CatmullClark;
+                        static_cast<CatmullClark*>(curve)->addControlPoint(point);
+                        break;
+                        
+                    case DrawCatmullRom:
+                        curve = new CatmullRom;
+                        static_cast<CatmullRom*>(curve)->addControlPoint(point);
+                        break;
+                        
+                    case DrawHermiteInterp:
+                        curve = new HermiteInterp;
+                        static_cast<HermiteInterp*>(curve)->addControlPoint(point);
+                        break;
+                        
+                    default:
+                        break;
+                        
+                }
+                if (curve != nullptr) {
+                    appStateManager->curves.push_back(curve);
+                    appStateManager->activeCurve()->setSelected(false);
+                    curve->setSelected(true);
+                    appStateManager->activeCurveIndex = (int)appStateManager->curves.size() - 1;
+                    glutPostRedisplay();
+                    Window::appStateManager->setEditMode(ModifyMode);
                     return true;
                 }
             }
+            break;
         }
-    }
-    // Modifying existing curves
-    else if (appEditMode == ModifyMode) {
-        if (state == GLUT_DOWN) {
-            Freeform *free = dynamic_cast<Freeform*>(appStateManager->activeCurve());
-            if (free != nullptr) {
-                
-                int existingIndex = free->currentControlPoint(point);
-                if (existingIndex != -1) {
-                    appStateManager->isDragging = true;
-                    appStateManager->activePointIndex = existingIndex;
+            
+        ///////////////////////////////
+        // Select an Existing Curves
+        ///////////////////////////////
+        case SelectMode: {
+            for (int i = 0; i < appStateManager->curves.size(); i++) {
+                Curve *c = dynamic_cast<Curve*>(appStateManager->curves.at(i));
+                if (free != nullptr) {
+                    float dist = c->distFromCurve(point);
+                    if (dist < SELECTION_DIST) {
+                        appStateManager->setToActiveCurve(i);
+                        appStateManager->setEditMode(ModifyMode);
+                        return true;
+                    }
                 }
-                else {//if (button == GLUT_RIGHT_BUTTON) {
-                    free->addControlPoint(point);
-                }
-                glutPostRedisplay();
-                return true;
             }
-        } else if (state == GLUT_UP) {
-            appStateManager->isDragging = false;
-            // catmull clark needs to be recomputed, but it is too expensive to do it on every move of the point
-            CatmullClark *cc = dynamic_cast<CatmullClark*>(appStateManager->activeCurve());
-            if (cc != nullptr) {
-                cc->recomputeHolder(4);
-                glutPostRedisplay();
-            }
-            appStateManager->activePointIndex = -1;
+            break;
         }
-    }
-    // Deleting curves and points along them
-    else if (appEditMode == DestroyMode) {
-        if (state == GLUT_UP) {
-            Freeform *free = dynamic_cast<Freeform*>(appStateManager->curves.at(appStateManager->activeCurveIndex));
-            if (free != nullptr) {
-                int existingIndex = free->currentControlPoint(point);
-                if (existingIndex != -1) {
-                    free->deleteControlPoint(existingIndex);
+            
+        ///////////////////////////////
+        // Modify Existing Curves
+        ///////////////////////////////
+        case ModifyMode: {
+            if (state == GLUT_DOWN) {
+                Freeform *free = dynamic_cast<Freeform*>(appStateManager->activeCurve());
+                if (free != nullptr) {
+                    
+                    int existingIndex = free->currentControlPoint(point);
+                    if (existingIndex != -1) {
+                        appStateManager->isDragging = true;
+                        appStateManager->activePointIndex = existingIndex;
+                    }
+                    else {//if (button == GLUT_RIGHT_BUTTON) {
+                        free->addControlPoint(point);
+                    }
+                    glutPostRedisplay();
+                    return true;
                 }
-                glutPostRedisplay();
-                return true;
+            } else if (state == GLUT_UP) {
+                appStateManager->isDragging = false;
+                // catmull clark needs to be recomputed, but it is too expensive to do it on every move of the point
+                CatmullClark *cc = dynamic_cast<CatmullClark*>(appStateManager->activeCurve());
+                if (cc != nullptr) {
+                    cc->recomputeHolder(4);
+                    glutPostRedisplay();
+                }
+                appStateManager->activePointIndex = -1;
             }
+            break;
         }
+        
+            
+        ///////////////////////////////
+        // Destroy Curves or points on them (not fully functional)
+        ///////////////////////////////
+        case DestroyMode: {
+            if (state == GLUT_UP) {
+                Freeform *free = dynamic_cast<Freeform*>(appStateManager->curves.at(appStateManager->activeCurveIndex));
+                if (free != nullptr) {
+                    int existingIndex = free->currentControlPoint(point);
+                    if (existingIndex != -1) {
+                        free->deleteControlPoint(existingIndex);
+                    }
+                    glutPostRedisplay();
+                    return true;
+                }
+            }
+            break;
+        }
+            
+        default:
+            break;
     }
     return false;
 }

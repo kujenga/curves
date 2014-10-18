@@ -43,7 +43,11 @@ float Curve::distFromCurve(float2 point)
 void Curve::draw()
 {
     performTransformations();
-    glBegin(GL_LINE_STRIP);
+    if (filled) {
+        glBegin(GL_TRIANGLE_FAN);
+    } else {
+        glBegin(GL_LINE_STRIP);
+    }
     if (selected) {
         glColor3d(selectedColor.r, selectedColor.g, selectedColor.b);
     } else {

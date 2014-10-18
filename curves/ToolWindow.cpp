@@ -118,7 +118,14 @@ bool ToolWindow::respondToKeyboardEvent(unsigned char c)
             active->translation = float2(0.5, 0.5);
             return true;
         }
+        case 'f': {
+            Curve* active = Window::appStateManager->activeCurve();
+            active->filled = !active->filled;
+            return true;
+        }
+            
         default:
             return false;
     }
 }
+

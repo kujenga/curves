@@ -45,4 +45,4 @@ to draw various line geometries in the 2d plane.
 - Support Catmull-Rom splines, created by clicking control points while holding key 'R'. [25 pts]
 - Support cubic Hermite interpolation splines, created by clicking control points while holding key 'U'. Derivatives at control points should be manually editable. Extra controls should be displayed to allow the user to adjust derivatives. [(*) 35 pts]
 - Support dragging control points of the selected curve. [10 pts]
-
+- When an object is selected, pressing the 'F' key should turn the curve into a polygon that fills the curve. [5 pts if it works for convex shapes, (*) 20 pts if it works for non-self-intersecting curves, (*) 25 points if it works for any curve]
