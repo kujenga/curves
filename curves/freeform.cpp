@@ -24,6 +24,13 @@ Freeform::Freeform(const Freeform& previous)
     controlPoints = previous.controlPoints;
 }
 
+Freeform::Freeform(int numPts, const float2 pts[])
+{
+    for (int i = 0; i < numPts; i++) {
+        controlPoints.push_back(pts[i]);
+    }
+}
+
 ///////////////////////////////////////////////////
 // DRAWING
 ///////////////////////////////////////////////////

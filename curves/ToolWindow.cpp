@@ -43,6 +43,14 @@ bool ToolWindow::draw()
         }
         tv->draw();
     }
+    
+    if (nView->curDigit() != appStateManager->curveCount()) {
+        nView->origin = transformedFloat2(0.75, 0.0);
+        nView->scale = float2(0.1, 0.8) * scale;
+        nView->setupCurve(appStateManager->curveCount());
+    }
+    nView->draw();
+    
     return false;
 }
 
@@ -110,7 +118,7 @@ bool ToolWindow::respondToKeyboardEvent(unsigned char c)
         // perform transformations
         case 'r': {
             Curve* active = Window::appStateManager->activeCurve();
-            active->rotation = 0.25*M_PI;
+            active->rotation += 0.25*M_PI;
             return true;
         }
         case 't': {

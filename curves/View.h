@@ -25,6 +25,11 @@ protected:
     {
         return scale * float2(x, y) + origin;
     }
+    
+    float2 transformedFloat2(float2 p)
+    {
+        return scale * p + origin;
+    }
 public:
     float2 scale;
     float2 origin;

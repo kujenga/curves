@@ -40,6 +40,11 @@ public:
     // all the curves created within the application
     std::vector<Curve*> curves;
     
+    int curveCount() { return (int)curves.size(); }
+    
+    Curve* activeCurve() { return curves.at(activeCurveIndex); }
+    void setToActiveCurve(int pos);
+    
     // index of the currently active curve
     int activeCurveIndex;
     // index of the currently active point along the curve
@@ -51,9 +56,6 @@ public:
     
     // whether or not trackers should be displayed
     bool showTrackers;
-    
-    Curve* activeCurve() { return curves.at(activeCurveIndex); }
-    void setToActiveCurve(int pos);
 
     ToolType getToolType() { return applicationToolType; }
     EditMode getEditMode() { return applicationEditMode; }

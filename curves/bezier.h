@@ -20,6 +20,7 @@ public:
     // calls superclass constructor
     Bezier(void) : Freeform() {}
     Bezier(const Freeform& previous) : Freeform(previous) {}
+    Bezier(const int numPts, const float2 pts[]) : Freeform(numPts, pts) {}
     
     void addControlPoint(float2 p);
     

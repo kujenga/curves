@@ -28,6 +28,7 @@ public:
     
     Freeform(void);
     Freeform(const Freeform& previous);
+    Freeform(const int numPts, const float2 pts[]);
     
     /////////////////////////////////
     // Drawing

@@ -14,9 +14,12 @@
 
 #include "Window.h"
 #include "ToolView.h"
+#include "NumberView.h"
 
 class ToolWindow : public Window {
     std::vector<ToolView*> toolViews;
+    NumberView *nView = new NumberView();
+    
 public:
     void setupViews();
     
