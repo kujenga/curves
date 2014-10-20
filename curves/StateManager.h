@@ -26,10 +26,11 @@ typedef enum {
 } ToolType;
 
 typedef enum{
-    SelectMode,
+    SelectMode = 0,
     CreateMode,
     ModifyMode,
     DestroyMode,
+    enumModeEnd
 } EditMode;
 
 class StateManager {

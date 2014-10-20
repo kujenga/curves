@@ -60,9 +60,7 @@ public:
     
     virtual void deleteControlPoint(int indx)
     {
-        printf("%lu\n",controlPoints.size());
         controlPoints.erase(controlPoints.begin() + indx);
-        printf("%lu\n",controlPoints.size());
     }
     
     virtual void moveControlPoint(int i, float2 pos);

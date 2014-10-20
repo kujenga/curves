@@ -26,6 +26,11 @@ public:
     
     virtual int currentControlPoint(float2 test);
     virtual void moveControlPoint(int i, float2 pos);
+    virtual void deleteControlPoint(int indx)
+    {
+        controlPoints.erase(controlPoints.begin() + indx);
+        controlPoints.erase(controlPoints.begin() + indx + 1);
+    }
     
     virtual float2 getPoint(float t);
     virtual float2 getDerivative(float t);

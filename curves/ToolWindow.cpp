@@ -67,18 +67,23 @@ bool ToolWindow::respondToMouseEvent(int button, int state, float2 point)
             appStateManager->setToolType(NoneType);
             // iterates over buttons to see which one was clicked, if any
             for (int i = 0; i < toolViews.size(); i++) {
-                if (toolViews.at(i)->containsPoint(point)) {
-                    toolViews.at(i)->setSelected(true);
+                ToolView *tv = toolViews.at(i);
+                if (tv->containsPoint(point)) {
+                    tv->setSelected(true);
                     // sets tool type in the state manager based on tool type of selected view
-                    ToolType chosenType = toolViews.at(i)->getToolType();
+                    ToolType chosenType = tv->getToolType();
                     if (chosenType != appStateManager->getToolType()) {
                         // if modes are changed, begin creating a new object
                         appStateManager->setEditMode(CreateMode);
                     }
                     appStateManager->setToolType(chosenType);
                 } else {
-                    toolViews.at(i)->setSelected(false);
+                    tv->setSelected(false);
                 }
+            }
+            if (mView->containsPoint(point)) {
+                EditMode em = (EditMode)((int)(appStateManager->getEditMode()+1) % (int)enumModeEnd);
+                appStateManager->setEditMode(em);
             }
             return true;
         }

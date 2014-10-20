@@ -46,7 +46,7 @@ protected:
     void performTransformations();
     
     void drawOutline();
-    void drawFilled(std::list<float2> pts, std::list<float2> cur);
+    void drawFilled(std::list<float2> pts, std::list<float2> cur, int depth);
 public:
     void setSelected(bool select) { selected = select; }
     // instantiated by subclasses to define curve

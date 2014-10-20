@@ -10,6 +10,8 @@
 
 #define DIST_STEPS 100
 
+#define FILL_DEPTH 1000
+
 void Curve::performTransformations()
 {
     glTranslatef(translation.x, translation.y, 0.0);
@@ -93,8 +95,11 @@ bool containsPoint(float2 a, float2 b, float2 c, float2 p)
     return (u >= 0) && (v >= 0) && (u + v < 1);
 }
 
-void Curve::drawFilled(std::list<float2> pts, std::list<float2> cur)
+void Curve::drawFilled(std::list<float2> pts, std::list<float2> cur, int depth)
 {
+    if (depth == 0) {
+        return;
+    }
     /*
      bi-directional curves:
      Compute the sum of all consecutive triangles around the edge of the shape, determine conterclockwise or clockwise nature based on whether the sum is negative or positive. Store this in a state of the curve and the signedArea of triangles must match that sign if they are to be drawn
@@ -108,19 +113,22 @@ void Curve::drawFilled(std::list<float2> pts, std::list<float2> cur)
     float2 fst = *(curItr++);
     float2 snd = *(curItr++);
     float2 trd = *(curItr++);
+    // current signed area must match that of the entire curve
     float cursa = signedArea(fst, snd, trd);
     if (areaSum < 0 ? cursa >= 0 : cursa < 0 ) {
         validEar = false;
     } else {
-        for ( ; itr != end; ++itr) {
+        while (itr != end) {
             float2 p = *itr;
             if (p == fst || p == snd || p == trd) {
+                itr++;
                 continue;
             }
             if (containsPoint(fst, snd, trd, p)) {
                 validEar = false;
                 break;
             }
+            itr++;
         }
     }
     // handle drawing if result indicates a valid ear
@@ -140,13 +148,14 @@ void Curve::drawFilled(std::list<float2> pts, std::list<float2> cur)
         glPopMatrix();
         
         cur.pop_front();
-        cur.pop_front();
+        cur.pop_front(); // removes outside point
         cur.push_front(fst);
     } else {
         cur.pop_front();
+        cur.push_back(fst);
     }
     if (cur.size() >= 3) {
-        drawFilled(pts, cur);
+        drawFilled(pts, cur, depth-1);
     } else {
         return;
     }
@@ -216,7 +225,7 @@ void Curve::draw()
             areaSum += signedArea(fst, snd, trd);
         }
         
-        drawFilled(pts, pts);
+        drawFilled(pts, pts, FILL_DEPTH);
     }
     drawOutline();
 

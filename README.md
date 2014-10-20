@@ -4,6 +4,10 @@
 uses deprecated versions of GLUT and OpenGL
 to draw various line geometries in the 2d plane.
 
+## Implementation details
+
+I pursed the implementation of this project a bit differently from the specifications on the original assignment. Rather than sticking to the stateless, key-press based control scheme, I decided to create a staeful manager for the application as well as a wondw manager in order to play around with things such as buttons and tool bars in a way similar to the implementation I have seen in actual systems.
+All the key-based controls and changes in state are handled by the ToolWindow class.Curves for the application and other application-wide state information is encapsulated by the StateManager class. The Mindow Manager keeps a stack of Windows that it draws iteratively on each idle of the application (it would be more efficient to implement a polling-based redrawing rather than forcing it to happen on every call to on-idle). Views are transformed to fit their origin and scale and are drawn by windows that encapsulate them.
 
 ## Class Structure
 - WindowManager
@@ -26,6 +30,8 @@ to draw various line geometries in the 2d plane.
         - is associated with a `ToolType` value and displays its associated text representation
 - Curve
     - pure virtual superclass of all curves, provides basic drawing functionality based on virtual methods
+    - Freeform
+        - virtual superclass of all the curves that contain control points
 
 
 ## Scoring
