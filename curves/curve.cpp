@@ -108,7 +108,8 @@ void Curve::drawFilled(std::list<float2> pts, std::list<float2> cur)
     float2 fst = *(curItr++);
     float2 snd = *(curItr++);
     float2 trd = *(curItr++);
-    if (signedArea(fst, snd, trd) < 0) {
+    float cursa = signedArea(fst, snd, trd);
+    if (areaSum < 0 ? cursa >= 0 : cursa < 0 ) {
         validEar = false;
     } else {
         for ( ; itr != end; ++itr) {
@@ -195,6 +196,26 @@ void Curve::draw()
         for (float t = 0; t < 1.0; t += STEP) {
             pts.push_back(getPoint(t));
         }
+        
+        areaSum = 0.0;
+        std::list<float2>::const_iterator itr = pts.begin(), end = pts.end();
+        while (itr != end) {
+            float2 fst = *(itr++);
+            if (itr == end) {
+                break;
+            }
+            float2 snd = *(itr++);
+            if (itr == end) {
+                break;
+            }
+            float2 trd = *(itr++);
+            if (itr == end) {
+                break;
+            }
+
+            areaSum += signedArea(fst, snd, trd);
+        }
+        
         drawFilled(pts, pts);
     }
     drawOutline();

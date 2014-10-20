@@ -39,6 +39,8 @@ struct Color {
 
 class Curve {
 protected:
+    float areaSum;
+    
     bool selected = false;
     
     void performTransformations();

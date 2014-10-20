@@ -101,7 +101,7 @@ float2 cubicHermiteSplineFunc(float t, float2 p0, float2 m0, float2 p1, float2 m
     float h01 = -2.0*t*t*t + 3.0*t*t;
     float h11 =      t*t*t -     t*t;
     
-    return p0*h00 + m0*h10*5 + p1*h01 + m1*h11*5;
+    return p0*h00 + m0*h10*5 + p1*h01 + m1*h11*3;
 }
 
 float2 HermiteInterp::getPoint(float t)
