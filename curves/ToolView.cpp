@@ -50,3 +50,4 @@ void ToolView::draw()
         glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, *p);
     glPopMatrix();
 }
+

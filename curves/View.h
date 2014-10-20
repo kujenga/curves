@@ -39,6 +39,8 @@ public:
     void setSelected(bool select) { selected = select; }
     
     virtual void draw();
+    void draw(Color c);
+    
 };
 
 #endif /* defined(__curves__View__) */

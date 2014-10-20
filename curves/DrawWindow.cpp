@@ -145,6 +145,10 @@ bool DrawWindow::respondToMouseEvent(int button, int state, float2 point)
                     int existingIndex = free->currentControlPoint(point);
                     if (existingIndex != -1) {
                         free->deleteControlPoint(existingIndex);
+                        // delete curves with fewer than 1 control point
+                        if (free->controlPointVectorSize() < 1) {
+                            appStateManager->deleteActiveCurve();
+                        }
                     }
                     glutPostRedisplay();
                     return true;

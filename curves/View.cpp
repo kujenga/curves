@@ -15,15 +15,12 @@ bool View::containsPoint(float2 point)
     return horizontal && vertical;
 }
 
-void View::draw()
+void View::draw(Color c)
 {
     glBegin(GL_POLYGON);
     
-    if (selected) {
-        glColor3d(0.2, 1.0, 1.0);
-    } else {
-        glColor3d(0.2, 1.0, 0.2);
-    }
+    glColor3d(c.r, c.g, c.b);
+    
     float2 corner = transformedFloat2(-1.0, 1.0);
     glVertex2d(corner.x, corner.y);
     corner = transformedFloat2( 1.0,  1.0);
@@ -34,4 +31,14 @@ void View::draw()
     glVertex2d(corner.x, corner.y);
     
     glEnd();
+
+}
+
+void View::draw()
+{
+    Color c = Color(0.2, 1.0, 0.2);
+    if (selected) {
+        c = Color(0.2, 1.0, 1.0);
+    }
+    draw(c);
 }

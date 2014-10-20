@@ -38,7 +38,8 @@ float Curve::distFromCurve(float2 point)
 // Drawing functions
 ///////////////////////////////////
 
-// implementation based on: http://www.blackpawn.com/texts/pointinpoly/ (barycentric technique)
+// theory from: http://www.geometrictools.com/Documentation/TriangulationByEarClipping.pdf
+// certain implementations based on: http://www.blackpawn.com/texts/pointinpoly/ (barycentric technique)
 
 float dotProd(float2 a, float2 b)
 {
@@ -61,6 +62,12 @@ bool sameSide(float2 p1, float2 p2, float2 a, float2 b)
         return true;
     }
     return false;
+}
+
+float signedArea(float2 a, float2 b, float2 c){
+    //http://stackoverflow.com/questions/17173633/determine-if-vertex-is-convex-help-understanding
+    //http://www.mathopenref.com/coordtrianglearea.html
+    return (a.x*(b.y - c.y) + b.x*(c.y - a.y) + c.x*(a.y - b.y)) / 2;
 }
 
 bool containsPoint(float2 a, float2 b, float2 c, float2 p)
@@ -86,25 +93,36 @@ bool containsPoint(float2 a, float2 b, float2 c, float2 p)
     return (u >= 0) && (v >= 0) && (u + v < 1);
 }
 
-
 void Curve::drawFilled(std::list<float2> pts, std::list<float2> cur)
 {
+    /*
+     bi-directional curves:
+     Compute the sum of all consecutive triangles around the edge of the shape, determine conterclockwise or clockwise nature based on whether the sum is negative or positive. Store this in a state of the curve and the signedArea of triangles must match that sign if they are to be drawn
+     
+     Still need to re-iterate over the curve to fill in internal ears (should already be handled, check existibg implementation)
+     */
+    
     bool validEar = true;
     std::list<float2>::const_iterator itr = pts.begin(), end = pts.end();
     std::list<float2>::const_iterator curItr = cur.begin();
     float2 fst = *(curItr++);
     float2 snd = *(curItr++);
     float2 trd = *(curItr++);
-    
-    for ( ; itr != end; ++itr) {
-        float2 p = *itr;
-        if (p == fst || p == snd || p == trd) {
-            continue;
-        }
-        if (containsPoint(fst, snd, trd, p)) {
-            validEar = false;
+    if (signedArea(fst, snd, trd) < 0) {
+        validEar = false;
+    } else {
+        for ( ; itr != end; ++itr) {
+            float2 p = *itr;
+            if (p == fst || p == snd || p == trd) {
+                continue;
+            }
+            if (containsPoint(fst, snd, trd, p)) {
+                validEar = false;
+                break;
+            }
         }
     }
+    // handle drawing if result indicates a valid ear
     if (validEar) {
         glPushMatrix();
         performTransformations();

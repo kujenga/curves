@@ -11,7 +11,7 @@
 
 void ModeView::draw()
 {
-    View::draw();
+    View::draw(Color(0.1, 0.1, 0.1));
     
     char buf[BUFSIZ];
     
@@ -34,11 +34,11 @@ void ModeView::draw()
             break;
     }
     
-    glColor3d(0.0f, 0.0f, 0.0f);
+    glColor3d(1.0f, 1.0f, 1.0f);
     glPushMatrix();
     float2 pos = transformedFloat2(-0.9, -0.2);
     glRasterPos2f(pos.x, pos.y);
     for (char *p = buf; *p; p++)
-        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *p);
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, *p);
     glPopMatrix();
 }

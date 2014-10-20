@@ -36,13 +36,14 @@ to draw various line geometries in the 2d plane.
 75 pts for a B,
 85 pts for an A.
 
-###
-- When an object is selected, the user may hold down 'A' to add control points to the selected object by clicking. [5 pts]
-- When no keys are pressed and the user presses the mouse button, the object at the mouse cursor (if there is any) becomes selected. [15 pts if this works approximately, (*) 25 pts if this works exactly]
+### Scoring metrics
+- Select control points through clicks. [5 pts]
+- Object at the mouse cursor becomes selected if clicked. [15 pts if this works approximately, (*) 25 pts if this works exactly]
     - implement line clipping, and clip objects to a small window around the cursor (knowledge-hungry student's way)
     - use OpenGL selection mode (OpenGL expert way)
 - Support Catmull-Clark subdivision curves, created by clicking control points while holding key 'C'. [20 pts]
 - Support Catmull-Rom splines, created by clicking control points while holding key 'R'. [25 pts]
-- Support cubic Hermite interpolation splines, created by clicking control points while holding key 'U'. Derivatives at control points should be manually editable. Extra controls should be displayed to allow the user to adjust derivatives. [(*) 35 pts]
+- Support cubic Hermite interpolation splines. Derivatives at control points should be manually editable. Extra controls should be displayed to allow the user to adjust derivatives. [(*) 35 pts]
 - Support dragging control points of the selected curve. [10 pts]
-- When an object is selected, pressing the 'F' key should turn the curve into a polygon that fills the curve. [5 pts if it works for convex shapes, (*) 20 pts if it works for non-self-intersecting curves, (*) 25 points if it works for any curve]
+- When an object is selected, pressing the 'F' key to fill it. [5 pts if it works for convex shapes, (*) 20 pts if it works for non-self-intersecting curves, (*) 25 points if it works for any curve]
+- Display the current number of curves in the corner using Bezier curves to form the numbers (steal control points from http://jackf.net/bezier-clock/) [20 pts]

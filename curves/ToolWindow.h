@@ -14,12 +14,15 @@
 
 #include "Window.h"
 #include "ToolView.h"
+#include "ModeView.h"
 #include "NumberView.h"
 
 class ToolWindow : public Window {
     std::vector<ToolView*> toolViews;
+    
     NumberView *nView = new NumberView();
     
+    ModeView *mView = new ModeView();
 public:
     void setupViews();
     

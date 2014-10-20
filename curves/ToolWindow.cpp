@@ -18,6 +18,12 @@ void ToolWindow::setupViews()
         tv->setToolType(types[i]);
         toolViews.push_back(tv);
     }
+    nView->origin = transformedFloat2(0.75, 0.0);
+    nView->scale = float2(0.1, 0.8) * scale;
+    
+    mView->appStateManager = appStateManager;
+    mView->origin = transformedFloat2(0.65, 0.0);
+    mView->scale = float2(0.08, 0.8) * scale;
 }
 
 bool ToolWindow::draw()
@@ -45,11 +51,10 @@ bool ToolWindow::draw()
     }
     
     if (nView->curDigit() != appStateManager->curveCount()) {
-        nView->origin = transformedFloat2(0.75, 0.0);
-        nView->scale = float2(0.1, 0.8) * scale;
         nView->setupCurve(appStateManager->curveCount());
     }
     nView->draw();
+    mView->draw();
     
     return false;
 }
@@ -84,16 +89,28 @@ bool ToolWindow::respondToMouseEvent(int button, int state, float2 point)
 
 bool ToolWindow::respondToKeyboardEvent(unsigned char c)
 {
+    if (appStateManager->curveCount() < 1) {
+        return false;
+    }
     switch (c) {
         // change application modes
         case 'n':
             Window::appStateManager->setEditMode(CreateMode);
             return true;
-        case 'd':
-            Window::appStateManager->setEditMode(DestroyMode);
+        case 'd': {
+            // if already destroying, change to modify
+            if (Window::appStateManager->getEditMode() == DestroyMode) {
+                Window::appStateManager->setEditMode(ModifyMode);
+            } else {
+                Window::appStateManager->setEditMode(DestroyMode);
+            }
             return true;
+        }
         case 's':
             Window::appStateManager->setEditMode(SelectMode);
+            return true;
+        case 'm':
+            Window::appStateManager->setEditMode(ModifyMode);
             return true;
         case 'S':
             Window::appStateManager->showTrackers = !Window::appStateManager->showTrackers;

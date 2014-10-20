@@ -15,9 +15,9 @@
 #include "StateManager.h"
 
 class ModeView : public View {
-    
 public:
     StateManager *appStateManager;
+    
     void draw();
 };
 
